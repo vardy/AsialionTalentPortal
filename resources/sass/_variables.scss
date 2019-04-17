@@ -1,16 +1,18 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 
 // Body
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-serif: 'Oxygen', sans-serif;
+$font-family-serif: 'Libre Baskerville', serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
+$white: #ffffff;
+$black: #000000;
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
@@ -21,3 +23,12 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+$al-dark: #252525;
+$al-darker: #1A1A1A;
+
+$font-color: $white;
+$font-color-dark: $black;
+$font-color-darker: #c9c9c9;
+
+$background-color: $al-dark;
+$background-color-darker: $al-darker;

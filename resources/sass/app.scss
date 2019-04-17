@@ -5,11 +5,82 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-body, html {
-  font-family: $font-family-serif;
+/*
+  Outline CSS properties for debugging Bootstrap grid
+*/
+.col-outline {
+  border: 1px solid black;
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.row-outline {
+  border: 1px solid red;
+}
+
+.container-outline {
+  border: 1px dotted orangered;
+}
+
+//
+
+.header-left, .header-right {
+  font-size: 2.5em;
+  letter-spacing: 3px;
+}
+
+#side-nav {
+  padding-top: 16vh;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: $background-color-darker;
+  height: 92.5vh;
+}
+
+#side-nav-body {
+  width: 100%;
+}
+
+#side-nav div {
+  margin-top: 25px;
+}
+
+#side-nav h1 {
+  text-align: center;
+  font-weight: bolder;
+}
+
+#side-nav ul {
+  padding-left: 0;
+  list-style: none;
+  width: inherit;
+}
+
+#side-nav li {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: $font-color;
+}
+
+#side-nav li:hover {
+  background-color: #393939;
+  color: $font-color-darker;
+}
+
+#side-nav li span {
+  padding-left: 2em;
+  color: inherit;
+}
+
+#side-nav li span a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#side-nav li span a:hover {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+#content-area {
+  padding-left: 30px;
 }
