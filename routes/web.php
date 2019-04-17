@@ -18,7 +18,7 @@ Route::get('/personal_details', 'PersonalDetailsController@index')->name('person
 Route::get('/careers', function() {
     return view('careers');
 
-})->name('invoices');
+})->name('careers');
 
 
 // Test route for CSS experimentation
