@@ -10,28 +10,32 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
-        <div id="side-nav" class="col-lg-2 col-md-2">
+            <div id="side-nav" class="col-lg-2 col-md-2">
 
-            <h1>Client<br>Portal</h1>
+                <h1>Client<br>Portal</h1>
 
-            <div id="side-nav-body">
-                <ul>
-                    <li><span><a href="{{ route('invoices') }}">Invoices</a></span></li>
-                    <li><span><a href="{{ route('nda') }}">NDA</a></span></li>
-                    <li><span><a href="{{ route('personal_details') }}">Personal Details</a></span></li>
-                    <li><span><a href="{{ route('careers') }}">Careers</a></span></li>
-                </ul>
+                <div id="side-nav-body">
+                    <ul>
+                        <li><span><a href="{{ route('invoices') }}">Invoices</a></span></li>
+                        <li><span><a href="{{ route('nda') }}">NDA</a></span></li>
+                        <li><span><a href="{{ route('personal_details') }}">Personal Details</a></span></li>
+                        <li><span><a href="{{ route('careers') }}">Careers</a></span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="content-area" class="col-lg-10 col-md-10">
+                @yield('content')
             </div>
         </div>
-
-        <div id="content-area" class="col-lg-10 col-md-10">
-            @yield('content')
-        </div>
-
     </div>
-</div>
+
+    <!-- Local JS Scripts -->
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
