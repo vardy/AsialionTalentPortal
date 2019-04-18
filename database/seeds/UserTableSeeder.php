@@ -1,8 +1,11 @@
 <?php
 
-use App\Role;
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Role;
+use App\Invoice;
+use App\File;
+use App\PurchaseOrder;
 
 class UserTableSeeder extends Seeder
 {
@@ -29,5 +32,18 @@ class UserTableSeeder extends Seeder
         $testUserOne->password = bcrypt(env('TEST_USER_ONE_PASSWORD'));
         $testUserOne->save();
         $testUserOne->roles()->attach($role_user);
+
+        $invoice = new Invoice();
+        $invoice->total = 0;
+        $invoice->user_id = $testUserOne->id;
+        $invoice->save();
+
+        $file = new File();
+        $file->invoice_id = $invoice->id;
+        $file->save();
+
+        $purchase_order = new PurchaseOrder();
+        $purchase_order->invoice_id = $invoice->id;
+        $purchase_order->save();
     }
 }
