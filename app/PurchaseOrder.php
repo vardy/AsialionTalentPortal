@@ -15,6 +15,15 @@ class PurchaseOrder extends Model
      */
     public $incrementing = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'po_number', 'description', 'value',
+    ];
+
     public function invoice() {
         return $this->belongsTo(Invoice::class);
     }

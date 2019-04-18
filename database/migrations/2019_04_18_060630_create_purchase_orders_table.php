@@ -14,11 +14,16 @@ class CreatePurchaseOrdersTable extends Migration
     public function up()
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
+            $table->primary('id');
+
             $table->uuid('id');
             $table->string('invoice_id');
+
             $table->timestamps();
 
-            $table->primary('id');
+            $table->integer('po_number');
+            $table->string('description');
+            $table->decimal('value');
         });
     }
 

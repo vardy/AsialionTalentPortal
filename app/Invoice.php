@@ -15,6 +15,15 @@ class Invoice extends Model
      */
     public $incrementing = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'total', 'invoice_number'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
