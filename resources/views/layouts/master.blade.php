@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title') | Client Portal</title>
 
@@ -43,10 +44,12 @@
                 </div>
             </div>
 
-            <div id="app content-area" class="col-lg-10 col-md-10">
+            <div id="content-area" class="col-lg-10 col-md-10">
                 @yield('content')
             </div>
         </div>
+
+        <div id="app"></div>
     </div>
 
     <!-- Local JS Scripts -->
