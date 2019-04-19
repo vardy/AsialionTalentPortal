@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 // Invoice controllers
 Route::get('/invoices', 'InvoiceController@create')->name('invoices');
+Route::post('/invoices', 'InvoiceController@store');
 
 // Other resource controllers
 Route::get('/nda', 'NDAController@index')->name('nda');

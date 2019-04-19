@@ -6,11 +6,44 @@ th, td {
   color: $font-color;
 }
 
+.dynamic-row td {
+  padding-right: 2em;
+  margin-bottom: 10px;
+}
+
+.dynamic-row {
+  height: 80px;
+}
+
+.col_btn_delete {
+  padding-top: 32px;
+}
+
 .dataTables_wrapper {
   margin-top: 3.5em;
   margin-bottom: 3.5em;
 }
 
+// Specifics
 #invoice_flavour {
   margin-bottom: 1em;
+}
+
+#new_invoice_header {
+  margin-top: 2.5em;
+}
+
+#form_create {
+  margin-bottom: 5em;
+}
+
+#btn_add_purchase_order {
+  height: 30px;
+  padding-top: 3px;
+  padding-bottom: 6px;
+  margin-bottom: 1em;
+}
+
+.row {
+  padding-bottom: 10px;
 }
