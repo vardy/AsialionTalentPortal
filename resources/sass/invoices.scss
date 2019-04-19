@@ -1,0 +1,16 @@
+@import "variables";
+
+
+// Table-related
+th, td {
+  color: $font-color;
+}
+
+.dataTables_wrapper {
+  margin-top: 3.5em;
+  margin-bottom: 3.5em;
+}
+
+#invoice_flavour {
+  margin-bottom: 1em;
+}

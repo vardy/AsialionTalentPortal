@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 
 // Invoice controllers
-Route::get('/invoices', 'InvoiceController@index')->name('invoices');
+Route::get('/invoices', 'InvoiceController@create')->name('invoices');
 
 // Other resource controllers
 Route::get('/nda', 'NDAController@index')->name('nda');

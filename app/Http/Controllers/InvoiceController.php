@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class InvoiceController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display 'thank you' screen after invoice submission.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function thank_you()
     {
-        //
+        return view('invoices.thank_you');
     }
 
     /**
@@ -24,7 +24,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('invoices.create', [
+            'invoices' => auth()->user()->invoices
+        ]);
     }
 
     /**
