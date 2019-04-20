@@ -79,6 +79,14 @@
             </table>
         </div>
 
+        <!-- NDA Waiver secction -->
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ndaCheck" name="ndaCheck" required>
+                <label class="form-check-label" for="ndaCheck">I have read and accept <a href="{{ route('nda') }}">the NDA agreement</a>.</label>
+            </div>
+        </div>
+
         <!-- Submit button -->
         <div class="form-group">
             <button class="btn-success" type="submit" >Submit</button>
