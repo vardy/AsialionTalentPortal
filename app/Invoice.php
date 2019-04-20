@@ -21,7 +21,7 @@ class Invoice extends Model
      * @var array
      */
     protected $fillable = [
-        'total', 'invoice_number'
+        'total', 'invoice_number', 'num_of_pos', 'num_of_files'
     ];
 
     public function user() {
