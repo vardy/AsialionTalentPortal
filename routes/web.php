@@ -14,7 +14,6 @@ Route::get('/invoices', 'InvoiceController@create')->name('invoices');
 Route::post('/invoices', 'InvoiceController@store');
 
 // Other resource controllers
-Route::get('/nda', 'NDAController@index')->name('nda');
 Route::get('/personal_details', 'PersonalDetailsController@index')->name('personal_details');
 
 // Careers page redirects users to main AsiaLion site careers page
@@ -23,8 +22,7 @@ Route::get('/careers', function() {
 
 })->name('careers');
 
-
-// Test route for CSS experimentation
-Route::get('/test', function() {
-   return view('test');
-});
+// NDA PDF viewer page
+Route::get('/nda', function () {
+    return view('nda');
+})->name('nda');
