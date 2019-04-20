@@ -21,7 +21,7 @@ class CreatePurchaseOrdersTable extends Migration
 
             $table->timestamps();
 
-            $table->integer('po_number');
+            $table->string('po_number');
             $table->string('description');
             $table->decimal('value');
         });

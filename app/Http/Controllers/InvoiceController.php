@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\File;
 use App\Invoice;
+use App\PurchaseOrder;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -124,9 +125,9 @@ class InvoiceController extends Controller
                     $fileEntry->invoice_id = $invoice->id;
                     $fileEntry->file_name = $file->getClientOriginalName();
                     $fileEntry->original_file_name = $file->getClientOriginalName();
-                    $fileEntry->fileSize = (string) $file->getSize();
-                    $fileEntry->fileExtension = $file->getClientOriginalExtension();
-                    $fileEntry->fileMime = $file->getClientMimeType();
+                    $fileEntry->file_size = (string) $file->getSize();
+                    $fileEntry->file_extension = $file->getClientOriginalExtension();
+                    $fileEntry->file_mime = $file->getClientMimeType();
                     $fileEntry->save();
 
                     // Commit object to s3 with file path and contents of file (key:object)
@@ -138,11 +139,28 @@ class InvoiceController extends Controller
             // Save POs to database
             // Assign invoice ID to POs
             // Add up running total
+            $po_total_value = 0;
+            if ($numOfPOs > 0) {
+                $poNum = 0;
+                foreach ($request->all()['po_number'] as $po_number) {
+                    $po_description = $request->all()['po_description'][$poNum];
+                    $po_value = $request->all()['po_value'][$poNum];
+
+                    $purchase_order = new PurchaseOrder();
+                    $purchase_order->invoice_id = $invoice->id;
+                    $purchase_order->po_number = $po_number ;
+                    $purchase_order->description = $po_description;
+                    $purchase_order->value = $po_value;
+                    $purchase_order->save();
+
+                    $po_total_value += $po_value;
+                    $poNum++;
+                }
+            }
 
             // Save total value of POs to invoice
-
-            dd($request->all(), $validator);
-            dd($request->all()['files'][0], $validator);
+            $invoice->total = $po_total_value;
+            $invoice->save();
 
             return redirect(route('invoices'));
 
