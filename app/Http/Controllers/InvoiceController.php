@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\File;
 use App\Invoice;
 use Illuminate\Http\Request;
 use Validator;
@@ -39,6 +40,8 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $rules = [];
+        $numOfPOs = 0;
+        $numOfFiles = 0;
 
         /* File validation
          * Throws error if files dont exist
@@ -46,6 +49,7 @@ class InvoiceController extends Controller
         try {
             foreach($request->allFiles()['files'] as $key => $value) {
                 $rules["files.{$key}"] = 'max:1000000';
+                $numOfFiles++;
             }
 
         } catch (\Exception $ex) {}
@@ -56,6 +60,7 @@ class InvoiceController extends Controller
         try {
             foreach($request->input('po_number') as $key => $value) {
                 $rules["po_number.{$key}"] = 'required|max:255|unique:purchase_orders,po_number';
+                $numOfPOs++;
             }
 
             foreach($request->input('po_description') as $key => $value) {
@@ -81,10 +86,7 @@ class InvoiceController extends Controller
                 //TagList::create(['name'=>$value]);
             //}
 
-            return response()->json(['success'=>'done']);
-
             /*
-
             $filesUploaded = $request->allFiles()["files"];
 
             foreach($filesUploaded as $file) {
@@ -92,8 +94,57 @@ class InvoiceController extends Controller
 
 
             }
-
             */
+
+            $invoice = new Invoice();
+            $invoice->user_id = auth()->user()->id;
+            $invoice->num_of_pos = $numOfPOs;
+            $invoice->num_of_files = $numOfFiles;
+
+            // Setting invoice number based off of user input
+            $empty_invoice_number =  $request->invoice_number == null;
+            if (!$empty_invoice_number) {
+                $invoice->invoice_number = $request->invoice_number;
+            }
+            $invoice->save();
+
+            // If no user input, set invoice number to first 5 chars of invoice ID
+            if ($empty_invoice_number) {
+                $invoice->invoice_number = substr($invoice->id, 0, 5);
+            }
+            $invoice->save();
+
+            // Save files to database and S3
+            // Assign invoice ID to files
+            if ($numOfFiles > 0) {
+                $allFiles = $request->allFiles()['files'];
+                foreach ($allFiles as $file) {
+
+                    $fileEntry = new File();
+                    $fileEntry->invoice_id = $invoice->id;
+                    $fileEntry->file_name = $file->getClientOriginalName();
+                    $fileEntry->original_file_name = $file->getClientOriginalName();
+                    $fileEntry->fileSize = (string) $file->getSize();
+                    $fileEntry->fileExtension = $file->getClientOriginalExtension();
+                    $fileEntry->fileMime = $file->getClientMimeType();
+                    $fileEntry->save();
+
+                    // Commit object to s3 with file path and contents of file (key:object)
+                    $filePathToStore = '/talentportal/' . $fileEntry->id;
+                    \Storage::disk('s3')->put($filePathToStore, file_get_contents($file));
+                }
+            }
+
+            // Save POs to database
+            // Assign invoice ID to POs
+            // Add up running total
+
+            // Save total value of POs to invoice
+
+            dd($request->all(), $validator);
+            dd($request->all()['files'][0], $validator);
+
+            return redirect(route('invoices'));
 
         } else {
 
@@ -101,31 +152,6 @@ class InvoiceController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        /*
-         *
-         * Parse:
-         *    - Invoice:
-         *       - Invoice number based off of ID
-         *       - Store ID for assigning to files and POs
-         *    - Files:
-         *       - Save to S3
-         *       - Save to database
-         *       - Assign Invoice ID
-         *    - Purchase Orders:
-         *       - PO number
-         *       - PO description
-         *       - PO value
-         *       - Save to database
-         *       - Assign invoice ID
-         *       - Add value to running total
-         *    - Total value of purchase orders saved to invoice
-         *    - Total number of purchase orders and files saved to invoice
-         * */
-
-
-
-        return redirect(route('invoices'));
     }
 
     /**
