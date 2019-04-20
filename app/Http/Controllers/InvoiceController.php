@@ -55,7 +55,7 @@ class InvoiceController extends Controller
          * */
         try {
             foreach($request->input('po_number') as $key => $value) {
-                $rules["po_number.{$key}"] = 'required|unique:purchase_orders,po_number';
+                $rules["po_number.{$key}"] = 'required|max:255|unique:purchase_orders,po_number';
             }
 
             foreach($request->input('po_description') as $key => $value) {
@@ -103,12 +103,6 @@ class InvoiceController extends Controller
         }
 
         /*
-         * Validate:
-         *    - NDA checkbox
-         *    - Max file sizes
-         *    - Max 255 characters for every text box
-         *    - Number value in PO value box
-         *    - Optional fields
          *
          * Parse:
          *    - Invoice:
