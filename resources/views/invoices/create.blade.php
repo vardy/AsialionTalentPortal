@@ -51,6 +51,16 @@
           Attach files
           Submit button
     -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form id="form_create" method="POST" action="{{ route('invoices') }}" enctype=multipart/form-data>
         {{ csrf_field() }}
 
@@ -58,14 +68,14 @@
             <!-- Invoice number section -->
             <div class="col">
                 <label for="invoice_number">Invoice number (optional)</label>
-                <textarea class="form-control" id="invoice_number" name="invoice_number" rows="1"></textarea>
+                <textarea class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="invoice_number" name="invoice_number" rows="1">{{ old('invoice_number') }}</textarea>
                 <small id="labelHelp" class="form-text text-muted">Max 255 characters.</small>
             </div>
 
             <!-- File upload section -->
             <div class="col">
                 <label for="upload_file">Attach files</label>
-                <input type="file" name="files[]" class="form-control-file">
+                <input type="file" name="files[]" class="form-control-file" multiple>
                 <small id="labelHelp" class="form-text text-muted">You may attach multiple files at once.</small>
             </div>
         </div>
@@ -104,16 +114,16 @@
                 $('#dynamic_field').append("<tr class=\"dynamic-row\" id=\"dynamic-row-" + i + "\">\n" +
                     "                    <td>\n" +
                     "                        <label for=\"po" + i + "_number\">Order number</label>\n" +
-                    "                        <textarea class=\"form-control po_field\" id=\"po" + i + "_number\" name=\"po" + i + "_number\" rows=\"1\" required></textarea>\n" +
+                    "                        <textarea class=\"form-control po_field\" id=\"po" + i + "_number\" name=\"po_number[]\" rows=\"1\" required></textarea>\n" +
                     "                    </td>\n" +
                     "                    <td>\n" +
                     "                        <label for=\"po" + i + "_description\">Description</label>\n" +
-                    "                        <textarea class=\"form-control po_field\" id=\"po" + i + "_description\" name=\"po" + i + "_description\" rows=\"1\" required></textarea>\n" +
+                    "                        <textarea class=\"form-control po_field\" id=\"po" + i + "_description\" name=\"po_description[]\" rows=\"1\" required></textarea>\n" +
                     "                    </td>\n" +
                     "                    <td>\n" +
                     "                        <label for=\"po" + i + "_value\">Value</label>\n" +
-                    "                        <textarea class=\"form-control po_field\" id=\"po" + i + "_value\" name=\"po" + i + "_value\" rows=\"1\" required></textarea>\n" +
-                    "                    </td>" +
+                    "                        <input type=\"number\" class=\"form-control po_field\" id=\"po" + i + "_value\" name=\"po_value[]\" step=\"0.01\" value=\"0.00\" placeholder=\"0.00\" required/>\n" +
+                    "                    </td>\n" +
                     "                    <td class=\"col_btn_delete\">\n" +
                     "                        <button class=\"btn-danger btn_remove\" id=" + i + ">Delete</button>\n" +
                     "                    </td>\n" +

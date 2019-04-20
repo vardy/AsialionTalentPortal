@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use Illuminate\Http\Request;
+use Validator;
 
 class InvoiceController extends Controller
 {
@@ -37,7 +38,100 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [];
+
+        /* File validation
+         * Throws error if files dont exist
+         * */
+        try {
+            foreach($request->allFiles()['files'] as $key => $value) {
+                $rules["files.{$key}"] = 'max:1000000';
+            }
+
+        } catch (\Exception $ex) {}
+
+        /* Catches error if fields don't exist
+         * (if user did not add any purchase orders)
+         * */
+        try {
+            foreach($request->input('po_number') as $key => $value) {
+                $rules["po_number.{$key}"] = 'required|unique:purchase_orders,po_number';
+            }
+
+            foreach($request->input('po_description') as $key => $value) {
+                $rules["po_description.{$key}"] = 'required|max:255';
+            }
+
+            foreach($request->input('po_value') as $key => $value) {
+                $rules["po_value.{$key}"] = 'required|numeric';
+            }
+
+        } catch (\Exception $ex) {}
+
+        $rules["ndaCheck"] = 'required';
+        $rules["invoice_number"] = 'max:255';
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+            // ADD TO DATABASE
+
+            //foreach($request->input('name') as $key => $value) {
+                //TagList::create(['name'=>$value]);
+            //}
+
+            return response()->json(['success'=>'done']);
+
+            /*
+
+            $filesUploaded = $request->allFiles()["files"];
+
+            foreach($filesUploaded as $file) {
+                $fileName = $file->getClientOriginalName();
+
+
+            }
+
+            */
+
+        } else {
+
+            return redirect(route('invoices'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        /*
+         * Validate:
+         *    - NDA checkbox
+         *    - Max file sizes
+         *    - Max 255 characters for every text box
+         *    - Number value in PO value box
+         *    - Optional fields
+         *
+         * Parse:
+         *    - Invoice:
+         *       - Invoice number based off of ID
+         *       - Store ID for assigning to files and POs
+         *    - Files:
+         *       - Save to S3
+         *       - Save to database
+         *       - Assign Invoice ID
+         *    - Purchase Orders:
+         *       - PO number
+         *       - PO description
+         *       - PO value
+         *       - Save to database
+         *       - Assign invoice ID
+         *       - Add value to running total
+         *    - Total value of purchase orders saved to invoice
+         *    - Total number of purchase orders and files saved to invoice
+         * */
+
+
+
+        return redirect(route('invoices'));
     }
 
     /**
