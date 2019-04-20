@@ -65,7 +65,7 @@
             <!-- File upload section -->
             <div class="col">
                 <label for="upload_file">Attach files</label>
-                <input type="file" class="form-control-file">
+                <input type="file" name="files[]" class="form-control-file">
                 <small id="labelHelp" class="form-text text-muted">You may attach multiple files at once.</small>
             </div>
         </div>
