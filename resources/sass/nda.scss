@@ -1,4 +1,11 @@
 .pdfobject-container {
-  height: 737px;
+  height: 700px;
   border: 1rem solid rgba(0,0,0,.1);
+  margin-bottom: 10px;
+}
+
+#pdf_download_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

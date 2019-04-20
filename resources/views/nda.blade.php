@@ -10,6 +10,10 @@
 @section('content')
     <div id="pdf_viewer"></div>
 
+    <div id="pdf_download_section">
+        <a href="/storage/files/NDA.pdf" download><button class="btn-dark" id="btn_download">Download</button></a>
+    </div>
+
     <script>
         var options = {
             fallbackLink: '<p>This browser does not support viewing PDFs. Please download the PDF to view it: <a href="{{ storage_path('files/NDA.pdf') }}">Download PDF</a></p>'
