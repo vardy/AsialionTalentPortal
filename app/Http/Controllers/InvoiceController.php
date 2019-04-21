@@ -21,13 +21,13 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the index of invoice objects and form for creating new invoices.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        return view('invoices.create', [
+        return view('invoices.index', [
             'invoices' => auth()->user()->invoices
         ]);
     }

@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 
 // Invoice controllers
-Route::get('/invoices', 'InvoiceController@create')->name('invoices');
+Route::get('/invoices', 'InvoiceController@index')->name('invoices');
 Route::post('/invoices', 'InvoiceController@store');
 
 // Other resource controllers
