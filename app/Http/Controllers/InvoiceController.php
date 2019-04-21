@@ -81,22 +81,6 @@ class InvoiceController extends Controller
 
         if ($validator->passes()) {
 
-            // ADD TO DATABASE
-
-            //foreach($request->input('name') as $key => $value) {
-                //TagList::create(['name'=>$value]);
-            //}
-
-            /*
-            $filesUploaded = $request->allFiles()["files"];
-
-            foreach($filesUploaded as $file) {
-                $fileName = $file->getClientOriginalName();
-
-
-            }
-            */
-
             $invoice = new Invoice();
             $invoice->user_id = auth()->user()->id;
             $invoice->num_of_pos = $numOfPOs;
