@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 // Invoice controllers
 Route::get('/invoices', 'InvoiceController@index')->name('invoices');
+Route::get('/invoices/{invoice}', 'InvoiceController@show');
 Route::post('/invoices', 'InvoiceController@store');
 Route::delete('/invoices/{invoice}', 'InvoiceController@destroy');
 
