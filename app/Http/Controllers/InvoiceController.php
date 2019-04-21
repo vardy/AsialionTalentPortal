@@ -6,6 +6,7 @@ use App\File;
 use App\Invoice;
 use App\PurchaseOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class InvoiceController extends Controller
@@ -196,8 +197,29 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Invoice $invoice)
+    public function destroy($id, Invoice $invoice)
     {
-        //
+        $invoice = Invoice::findOrFail($id);
+
+        // Delete files belonging to invoice
+        foreach ($invoice->files() as $file) {
+
+            // Delete files from SQL
+            File::findOrFail($file->id)->delete();
+
+            // Delete files from S3
+            $s3PathToFile = '/talentportal/' . $file->id;
+            Storage::disk('s3')->delete($s3PathToFile);
+        }
+
+        // Loop through purchase order IDs in SQL and delete rows
+        foreach ($invoice->purchase_orders() as $purchase_order) {
+
+            // Delete purchase orders from SQL
+            PurchaseOrder::findOrFail($purchase_order)->delete();
+        }
+
+        // Delete invoice entry
+        $invoice->delete();
     }
 }

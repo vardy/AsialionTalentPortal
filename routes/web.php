@@ -12,6 +12,7 @@ Route::get('/', function () {
 // Invoice controllers
 Route::get('/invoices', 'InvoiceController@index')->name('invoices');
 Route::post('/invoices', 'InvoiceController@store');
+Route::delete('/invoices/{invoice}', 'InvoiceController@destroy');
 
 // Other resource controllers
 Route::get('/personal_details', 'PersonalDetailsController@index')->name('personal_details');
