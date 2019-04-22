@@ -29,7 +29,7 @@
         <tbody>
             @foreach($invoices as $invoice)
                 <tr class="table-active">
-                    <th scope="row"><a href="#"> {{ $invoice->invoice_number }} </a></th>
+                    <th scope="row"><a href="/invoices/{{ $invoice->id }}"> {{ $invoice->invoice_number }} </a></th>
                     <td> THB {{ $invoice->total }} </td>
                     <td> {{ $invoice->num_of_pos }} </td>
                     <td> {{ $invoice->num_of_files }} </td>

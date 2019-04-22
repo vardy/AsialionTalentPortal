@@ -201,29 +201,31 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Invoice $invoice)
+    public function destroy($id)
     {
         $invoice = Invoice::findOrFail($id);
 
         // Delete files belonging to invoice
-        foreach ($invoice->files() as $file) {
-
-            // Delete files from SQL
-            File::findOrFail($file->id)->delete();
+        foreach ($invoice->files as $file) {
 
             // Delete files from S3
             $s3PathToFile = '/talentportal/' . $file->id;
             Storage::disk('s3')->delete($s3PathToFile);
+
+            // Delete files from SQL
+            File::findOrFail($file->id)->delete();
         }
 
         // Loop through purchase order IDs in SQL and delete rows
-        foreach ($invoice->purchase_orders() as $purchase_order) {
+        foreach ($invoice->purchase_orders as $purchase_order) {
 
             // Delete purchase orders from SQL
-            PurchaseOrder::findOrFail($purchase_order)->delete();
+            PurchaseOrder::findOrFail($purchase_order->id)->delete();
         }
 
         // Delete invoice entry
         $invoice->delete();
+
+        return redirect(route('invoices'));
     }
 }

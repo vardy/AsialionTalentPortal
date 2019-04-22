@@ -2,12 +2,73 @@
 
 @section('title', 'Invoice ' . $invoice_id)
 
+@section('imports')
+    <link href="{{ mix('css/invoices.css') }}" rel="stylesheet">
+@stop
+
 @section('content')
     <!--
-    Show invoice number and total value
-    Show table of details for purchase orders
-    Show table of details for files
+    Form to delete invoice
     -->
 
     <h1>Invoice {{ $invoice->invoice_number }}</h1>
+
+    <div id="invoice_stats">
+        <p>Total (from purchase orders): THB {{ $invoice->total }}</p>
+        <p>Number of files: {{ $invoice->num_of_files }}</p>
+        <p>Number of purchase orders: {{ $invoice->num_of_pos }}</p>
+    </div>
+
+    <h2>Files</h2>
+
+    <table class="table dataTable">
+        <thead>
+            <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">File Size (KB)</th>
+                <th scope="col">File Type</th>
+                <th scope="col">Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($invoice->files as $file)
+                <tr class="table-active">
+                    <td> {{ $file->file_name }} </td>
+                    <td> {{ $file->file_size }} </td>
+                    <td> {{ $file->file_mime }} </td>
+                    <td> {{ $file->created_at }} </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h2>Purchase Orders</h2>
+
+    <table class="table dataTable">
+        <thead>
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Description</th>
+                <th scope="col">Value (THB)</th>
+                <th scope="col">Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($invoice->purchase_orders as $po)
+                <tr class="table-active">
+                    <td> {{ $po->po_number }} </td>
+                    <td> {{ $po->description }} </td>
+                    <td> {{ $po->value }} </td>
+                    <td> {{ $po->created_at }} </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <form id="form_delete" method="POST" action="{{ route('invoices') }}/{{ $invoice->id }}" enctype=multipart/form-data>
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
+
+        <button class="btn-danger" onclick="parentNode.submit();">Delete Invoice</button>
+    </form>
 @stop
