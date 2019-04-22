@@ -28,3 +28,6 @@ Route::get('/careers', function() {
 Route::get('/nda', function () {
     return view('nda');
 })->name('nda');
+
+// Admin temporary panel
+Route::get('/admin', 'AdminController@index')->name('admin');
