@@ -1,6 +1,7 @@
 #btn_submit {
   margin-left: 15px;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 #cv_upload_section {
@@ -11,7 +12,11 @@
   margin-bottom: 30px;
 }
 
-#country_label {
+#currency_used_label, #for_freelancers_header {
+  margin-top: 30px;
+}
+
+.label-block {
   display: block;
 }
 
