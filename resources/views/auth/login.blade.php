@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('imports')
+    <link href="{{ mix('css/login.css') }}" rel="stylesheet">
+@stop
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
