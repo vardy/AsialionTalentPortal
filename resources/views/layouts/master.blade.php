@@ -29,7 +29,6 @@
 <body>
     <div class="container">
         <div class="row">
-
             <div id="side-nav" class="col-lg-2 col-md-2">
 
                 <h1>Client<br>Portal</h1>
