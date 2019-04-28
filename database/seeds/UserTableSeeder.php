@@ -6,6 +6,8 @@ use App\Role;
 use App\Invoice;
 use App\File;
 use App\PurchaseOrder;
+use App\PersonalDetails;
+use App\CV;
 
 class UserTableSeeder extends Seeder
 {
@@ -65,5 +67,13 @@ class UserTableSeeder extends Seeder
         $purchase_order->description = 'Order for screwdrivers';
         $purchase_order->value = 100;
         $purchase_order->save();
+
+        $personal_details = new PersonalDetails();
+        $personal_details->user_id = $testUserOne->id;
+        $personal_details->save();
+
+        $cv = new CV();
+        $cv->personal_details_id = $personal_details->id;
+        $cv->save();
     }
 }
