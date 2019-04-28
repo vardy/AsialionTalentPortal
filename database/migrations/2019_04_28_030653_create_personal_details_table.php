@@ -21,31 +21,31 @@ class CreatePersonalDetailsTable extends Migration
 
             $table->timestamps();
 
-            $table->string('first_name')->nullable(); // Required
-            $table->string('last_name')->nullable(); // Required
-            $table->string('email')->nullable(); // Required
-            $table->string('skype_id')->nullable();
+            $table->mediumText('first_name')->nullable(); // Required
+            $table->mediumText('last_name')->nullable(); // Required
+            $table->mediumText('email')->nullable(); // Required
+            $table->mediumText('skype_id')->nullable();
 
-            $table->string('country_of_residence')->nullable(); // Required
-            $table->string('mobile_number')->nullable(); // Required
-            $table->string('home_number')->nullable();
+            $table->mediumText('country_of_residence')->nullable(); // Required
+            $table->mediumText('mobile_number')->nullable(); // Required
+            $table->mediumText('home_number')->nullable();
 
-            $table->string('highest_education')->nullable(); // Required
-            $table->string('professional_experience')->nullable(); // Required
-            $table->string('industry_experience')->nullable(); // Required
-            $table->string('language_pairs')->nullable(); // Required
-            $table->string('tools')->nullable();
-            $table->string('turnaround_per_day')->nullable();
+            $table->mediumText('highest_education')->nullable(); // Required
+            $table->mediumText('professional_experience')->nullable(); // Required
+            $table->mediumText('industry_experience')->nullable(); // Required
+            $table->mediumText('language_pairs')->nullable(); // Required
+            $table->mediumText('tools')->nullable();
+            $table->mediumText('turnaround_per_day')->nullable();
 
             // Permanent positions
-            $table->string('latest_remuneration')->nullable();
-            $table->string('expected_remuneration')->nullable();
+            $table->mediumText('latest_remuneration')->nullable();
+            $table->mediumText('expected_remuneration')->nullable();
 
             // Freelancers
-            $table->string('translation_rate')->nullable();
-            $table->string('editing_rate')->nullable();
-            $table->string('transcription_rate')->nullable();
-            $table->string('hourly_rate')->nullable();
+            $table->mediumText('translation_rate')->nullable();
+            $table->mediumText('editing_rate')->nullable();
+            $table->mediumText('transcription_rate')->nullable();
+            $table->mediumText('hourly_rate')->nullable();
         });
     }
 
