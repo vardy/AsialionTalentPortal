@@ -27,6 +27,10 @@
 </head>
 
 <body>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
     <div class="container">
         <div class="row">
             <div id="side-nav" class="col-lg-2 col-md-2">
@@ -38,7 +42,12 @@
                         <li><span><a href="{{ route('invoices') }}">Invoices</a></span></li>
                         <li><span><a href="{{ route('nda') }}">NDA</a></span></li>
                         <li><span><a href="{{ route('personal_details') }}">Personal Details</a></span></li>
-                        <li><span><a href="{{ route('careers') }}">Careers</a></span></li>
+                        <li><span><a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}">Careers</a></span></li>
+                        <li><span><a href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                                    Logout</a></span>
+                        </li>
                     </ul>
                 </div>
             </div>
