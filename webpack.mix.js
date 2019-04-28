@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/invoices.scss', 'public/css')
     .sass('resources/sass/nda.scss', 'public/css')
+    .sass('resources/sass/personal_details.scss', 'public/css')
     .extract();
 
 if (mix.inProduction()) {
