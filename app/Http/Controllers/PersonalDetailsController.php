@@ -14,7 +14,10 @@ class PersonalDetailsController extends Controller
      */
     public function index()
     {
-        return view('personal_details.index');
+        return view('personal_details.index', [
+            'user' => auth()->user(),
+            'countries' => \Countries::all()
+        ]);
     }
 
     /**
