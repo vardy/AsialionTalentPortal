@@ -40,17 +40,6 @@
 
     <h1 id="new_invoice_header">New Invoice</h1>
 
-    <!--
-        Form:
-          Invoice number (optional)
-          PO section (click to add another PO)
-            PO Number
-            Description
-            Value
-          Display: total value (sum of PO section values)
-          Attach files
-          Submit button
-    -->
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
