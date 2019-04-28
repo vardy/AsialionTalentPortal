@@ -37,20 +37,16 @@ class CreatePersonalDetailsTable extends Migration
             $table->mediumText('tools')->nullable();
             $table->mediumText('turnaround_per_day')->nullable();
 
+            $table->mediumText('currency_used')->nullable();
+
             // Permanent positions
-            $table->mediumText('latest_remuneration_currency')->nullable();
             $table->mediumText('latest_remuneration')->nullable();
-            $table->mediumText('expected_remuneration_currency')->nullable();
             $table->mediumText('expected_remuneration')->nullable();
 
             // Freelancers
-            $table->mediumText('translation_rate_currency')->nullable();
             $table->mediumText('translation_rate')->nullable();
-            $table->mediumText('editing_rate_currency')->nullable();
             $table->mediumText('editing_rate')->nullable();
-            $table->mediumText('transcription_rate_currency')->nullable();
             $table->mediumText('transcription_rate')->nullable();
-            $table->mediumText('hourly_rate_currency')->nullable();
             $table->mediumText('hourly_rate')->nullable();
         });
     }
