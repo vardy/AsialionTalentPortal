@@ -35,7 +35,7 @@
         <div class="row">
             <div id="side-nav" class="col-lg-2 col-md-2">
 
-                <h1>Client<br>Portal</h1>
+                <h1>Talent<br>Portal</h1>
 
                 <div id="side-nav-body">
                     <ul>
