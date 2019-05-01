@@ -21,7 +21,13 @@
         </div>
     @endif
 
-    <form id="form_personal_details" method="POST" action="{{ route('personal_details') }}" enctype=multipart/form-data>
+    @if (session()->has('success-message'))
+        <div class="alert alert-success">
+            <p>{{ session('success-message') }}</p>
+        </div>
+    @endif
+
+    <form id="form_personal_details" method="POST" action="{{ route('personal_details') }}/{{ $user->id }}" enctype=multipart/form-data>
         {{ csrf_field() }}
         {{ method_field('PUT') }}
 
@@ -54,7 +60,7 @@
         <div class="row">
             <div class="form-group col">
                 <label for="country_of_residence" class="label-block required">Country of Residence <span>*</span></label>
-                <select class="form-group {{ $errors->has('country_of_residence') ? ' is-invalid' : '' }}" id="country_of_residence" name="country_of_residence">
+                <select class="form-group {{ $errors->has('country_of_residence') ? ' is-invalid' : '' }}" id="country_of_residence" name="country_of_residence" required>
                     <option selected>...</option>
                     @foreach($countries as $country)
                         <option @if($country->name == $user->personalDetails->country_of_residence) selected @endif>{{ $country->name }}</option>

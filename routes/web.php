@@ -20,6 +20,7 @@ Route::get('/files/{file}', 'FileController@show');
 
 // Other resource controllers
 Route::get('/personal_details', 'PersonalDetailsController@index')->name('personal_details');
+Route::put('/personal_details/{user_id}', 'PersonalDetailsController@update');
 
 // Careers page redirects users to main AsiaLion site careers page
 Route::get('/careers', function() {
