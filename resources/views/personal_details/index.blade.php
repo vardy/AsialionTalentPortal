@@ -177,8 +177,8 @@
         <!-- CV UPLOAD -->
         <div id="cv_upload_section" class="row">
             <div class="form-group col">
-                <label for="cv_upload">CV or Résumé (PDF or Docx)</label>
-                <input type="file" name="cv" class="form-control-file">
+                <label for="cv_upload" class="required">CV or Résumé (PDF or Docx) <span>*</span></label>
+                <input type="file" name="cv" class="form-control-file" required>
             </div>
         </div>
 
