@@ -1,12 +1,14 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 // Body
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-serif: 'Libre Baskerville', serif;
+$heading-font: 'Libre Baskerville', serif;
+$body-font: 'Lato', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
