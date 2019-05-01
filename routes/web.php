@@ -15,6 +15,9 @@ Route::get('/invoices/{invoice}', 'InvoiceController@show');
 Route::post('/invoices', 'InvoiceController@store');
 Route::delete('/invoices/{invoice}', 'InvoiceController@destroy');
 
+// File controller
+Route::get('/files/{file}', 'FileController@show');
+
 // Other resource controllers
 Route::get('/personal_details', 'PersonalDetailsController@index')->name('personal_details');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -44,9 +45,31 @@ class FileController extends Controller
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function show(File $file)
+    public function show($file_id)
     {
-        //
+        $filePathExpected = '/talentportal/' . $file_id;
+        if (!$file_id || !Storage::disk('s3')->exists($filePathExpected)) {
+            abort(404);
+        }
+
+        // Check user has ownership of file or admin privileges.
+        if(File::findOrFail($file_id)->invoice->user->id !== auth()->user()->id && !auth()->user()->authorizeRoles(['admin'])) {
+            abort(404);
+        }
+
+        return response()->stream(function() use ($filePathExpected) {
+            $stream = Storage::disk('s3')->readStream($filePathExpected);
+            fpassthru($stream);
+            if (is_resource($stream)) {
+                fclose($stream);
+            }
+        }, 200, [
+            'Cache-Control'         => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-Type'          => Storage::disk('s3')->mimeType($filePathExpected),
+            'Content-Length'        => Storage::disk('s3')->size($filePathExpected),
+            'Content-Disposition'   => 'attachment; filename="' . File::findOrFail($file_id)->file_name . '"',
+            'Pragma'                => 'public',
+        ]);
     }
 
     /**

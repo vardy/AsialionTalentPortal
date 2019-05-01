@@ -33,7 +33,7 @@
         <tbody>
             @foreach($invoice->files as $file)
                 <tr class="table-active">
-                    <td> {{ $file->file_name }} </td>
+                    <th scope="row"><a href="/files/{{ $file->id }}"> {{ $file->file_name }} </a></th>
                     <td> {{ $file->file_size }} </td>
                     <td> {{ $file->file_mime }} </td>
                     <td> {{ $file->created_at }} </td>
