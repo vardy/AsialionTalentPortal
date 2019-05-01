@@ -178,7 +178,7 @@
         <div id="cv_upload_section" class="row">
             <div class="form-group col">
                 <label for="cv_upload" class="required">CV or Résumé (PDF or Docx) <span>*</span></label>
-                <input type="file" name="cv" class="form-control-file" required>
+                <input type="file" name="cv" class="form-control-file {{ $errors->has('hourly_rate') ? ' is-invalid' : '' }}" required>
             </div>
         </div>
 
