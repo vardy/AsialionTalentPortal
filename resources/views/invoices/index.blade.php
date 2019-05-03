@@ -14,6 +14,22 @@
         upload your invoices to be processed.
     </p>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session()->has('success-message'))
+        <div class="alert alert-success">
+            <p>{{ session('success-message') }}</p>
+        </div>
+    @endif
+
     <!--
         Table to display invoices
     -->
@@ -39,16 +55,6 @@
     </table>
 
     <h1 id="new_invoice_header">New Invoice</h1>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     <form id="form_create" method="POST" action="{{ route('invoices') }}" enctype=multipart/form-data>
         {{ csrf_field() }}

@@ -152,7 +152,9 @@ class InvoiceController extends Controller
             $invoice->total = $po_total_value;
             $invoice->save();
 
-            return redirect(route('invoices'));
+            return redirect(route('invoices'))->with([
+                'success-message' => 'You have successfully submitted a new invoice.'
+            ]);
 
         } else {
 
