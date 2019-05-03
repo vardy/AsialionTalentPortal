@@ -35,19 +35,25 @@
         <div class="row">
             <div id="side-nav" class="col-lg-2 col-md-2">
 
-                <h1>Talent<br>Portal</h1>
+                <img src="/storage/files/AL_LOGO.png" alt="AsiaLion Logo">
 
                 <div id="side-nav-body">
                     <ul>
-                        <li><span><a href="{{ route('invoices') }}">Invoices</a></span></li>
-                        <li><span><a href="{{ route('nda') }}">NDA</a></span></li>
-                        <li><span><a href="{{ route('personal_details') }}">Personal Details</a></span></li>
-                        <li><span><a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}">Careers</a></span></li>
-                        <li><span><a href="{{ route('logout') }}"
-                                     onclick="event.preventDefault();
+                        <a href="{{ route('invoices') }}"><li><span>Invoices</span></li></a>
+                        <a href="{{ route('nda') }}"><li><span>NDA</span></li></a>
+                        <a href="{{ route('personal_details') }}"><li><span>Personal Details</span></li></a>
+                        <a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}"><li><span>Careers</span></li></a>
+                    </ul>
+                </div>
+
+                <div id="logout-section">
+                    <img src="{{ auth()->user()->getProfilePicturePath(auth()->user()) }}" alt="Your profile picture.">
+
+                    <ul>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
-                                    Logout</a></span>
-                        </li>
+                            <li class="relative"><span>Logout</span></li></a>
                     </ul>
                 </div>
             </div>

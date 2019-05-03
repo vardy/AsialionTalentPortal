@@ -43,24 +43,23 @@ h1 {
 }
 
 #side-nav {
+  position: relative;
   padding-top: 16vh;
   padding-left: 0;
   padding-right: 0;
   background-color: $background-color-darker;
   height: 92.5vh;
+
 }
 
 #side-nav-body {
   width: 100%;
 }
 
-#side-nav div {
-  margin-top: 25px;
-}
-
-#side-nav h1 {
-  text-align: center;
-  font-weight: bolder;
+#side-nav img {
+  width: 84%;
+  display:block;
+  margin:auto;
 }
 
 #side-nav ul {
@@ -78,6 +77,8 @@ h1 {
 #side-nav li:hover {
   background-color: #393939;
   color: $font-color-darker;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #side-nav li span {
@@ -85,7 +86,7 @@ h1 {
   color: inherit;
 }
 
-#side-nav li span a {
+#side-nav a {
   text-decoration: none;
   color: inherit;
 }
@@ -94,6 +95,26 @@ h1 {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+#logout-section {
+  position: absolute;
+  left: 20px;
+  bottom: 15px;
+}
+
+#logout-section img {
+  display: inline;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 6px;
+}
+
+#logout-section ul, #logout-section ul a li span, #logout-section ul a li {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #content-area {
