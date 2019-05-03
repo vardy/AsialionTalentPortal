@@ -120,3 +120,17 @@ h1 {
 #content-area {
   padding-left: 30px;
 }
+
+// Table customisations
+.page-item.active .page-link {
+  background-color: darkgray;
+  border-color: black;
+}
+
+.page-link {
+  color: black;
+}
+
+.page-link:hover {
+  color: gray;
+}

@@ -50,6 +50,15 @@ class UserTableSeeder extends Seeder
         $invoice->invoice_number = substr($invoice->id, 0, 5);
         $invoice->save();
 
+        for($i = 0; $i < 15; $i++) {
+            $invoice = new Invoice();
+            $invoice->user_id = $testUserOne->id;
+            $invoice->total = 0;
+            $invoice->save();
+            $invoice->invoice_number = substr($invoice->id, 0, 5);
+            $invoice->save();
+        }
+
         // File and purchase order is saved with the invoice's ID set
         // File's fields are set by parsing a file's metadata with provided
         // functions for Files.

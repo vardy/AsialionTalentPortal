@@ -69,6 +69,6 @@
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
 
-        <button class="btn-danger" onclick="parentNode.submit();">Delete Invoice</button>
+        <button class="btn btn-outline-danger" onclick="parentNode.submit();">Delete Invoice</button>
     </form>
 @stop

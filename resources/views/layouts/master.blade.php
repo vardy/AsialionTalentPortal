@@ -46,16 +46,18 @@
                     </ul>
                 </div>
 
-                <div id="logout-section">
-                    <img src="{{ auth()->user()->getProfilePicturePath(auth()->user()) }}" alt="Your profile picture.">
+                @auth
+                    <div id="logout-section">
+                        <img src="{{ auth()->user()->getProfilePicturePath(auth()->user()) }}" alt="Your profile picture.">
 
-                    <ul>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            <li class="relative"><span>Logout</span></li></a>
-                    </ul>
-                </div>
+                        <ul>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                <li class="relative"><span>Logout</span></li></a>
+                        </ul>
+                    </div>
+                @endauth
             </div>
 
             <div id="content-area" class="col-lg-10 col-md-10">

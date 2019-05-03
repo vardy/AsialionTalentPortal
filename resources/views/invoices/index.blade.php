@@ -72,7 +72,7 @@
         <!-- Purchase order section -->
         <div class="form-group">
             <label for="btn_add_purchase_order">Purchase orders</label>
-            <button id="btn_add_purchase_order" class="btn-info form-control">Add purchase order</button>
+            <button id="btn_add_purchase_order" class="btn btn-outline-info form-control">Add purchase order</button>
 
             <table id="dynamic_field">
             </table>
@@ -88,7 +88,7 @@
 
         <!-- Submit button -->
         <div class="form-group">
-            <button class="btn-success" type="submit" >Submit</button>
+            <button class="btn btn-outline-light" type="submit" >Submit</button>
         </div>
     </form>
 
@@ -114,7 +114,7 @@
                     "                        <input type=\"number\" class=\"form-control po_field\" id=\"po" + i + "_value\" name=\"po_value[]\" step=\"0.01\" value=\"0.00\" placeholder=\"0.00\" required/>\n" +
                     "                    </td>\n" +
                     "                    <td class=\"col_btn_delete\">\n" +
-                    "                        <button class=\"btn-danger btn_remove\" id=" + i + ">Delete</button>\n" +
+                    "                        <button class=\"btn btn-outline-danger btn_remove\" id=" + i + ">Delete</button>\n" +
                     "                    </td>\n" +
                     "                </tr>");
             });
