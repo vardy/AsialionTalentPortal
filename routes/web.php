@@ -18,9 +18,12 @@ Route::delete('/invoices/{invoice}', 'InvoiceController@destroy');
 // File controller
 Route::get('/files/{file}', 'FileController@show');
 
-// Other resource controllers
+// Personal details controller
 Route::get('/personal_details', 'PersonalDetailsController@index')->name('personal_details');
 Route::put('/personal_details/{user_id}', 'PersonalDetailsController@update');
+
+// Profile picture controller
+Route::delete('/profile_pictures/{pfp_id}', 'ProfilePictureController@destroy')->name('profile_pictures');
 
 // Careers page redirects users to main AsiaLion site careers page
 Route::get('/careers', function() {

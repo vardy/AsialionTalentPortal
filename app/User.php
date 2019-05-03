@@ -54,17 +54,24 @@ class User extends Authenticatable
         return $this->hasMany(Invoice::class);
     }
 
-    public function roles()
-    {
+    public function roles() {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function getProfilePicturePath($user) {
+        $profilePictureID =  $user->personalDetails->profilePicture->id;
+
+        $virtualPath = '/storage/user_data/profile_pictures/' . $profilePictureID;
+        $actualPath = storage_path() . '/app/public/user_data/profile_pictures/' . $profilePictureID;
+        $defaultPath = '/storage/user_data/profile_pictures/default.png';
+        return file_exists($actualPath) ? $virtualPath : $defaultPath;
     }
 
     /**
      * @param string|array $roles
      * @return boolean
      */
-    public function authorizeRoles($roles)
-    {
+    public function authorizeRoles($roles) {
         if (is_array($roles)) {
             return $this->hasAnyRole($roles) ||
                 abort(401, 'This action is unauthorized.');
@@ -78,8 +85,7 @@ class User extends Authenticatable
      * @param array $roles
      * @return boolean
      */
-    public function hasAnyRole($roles)
-    {
+    public function hasAnyRole($roles) {
         return null !== $this->roles()->whereIn('name', $roles)->first();
     }
 
@@ -88,8 +94,7 @@ class User extends Authenticatable
      * @param string $role
      * @return boolean
      */
-    public function hasRole($role)
-    {
+    public function hasRole($role) {
         return null !== $this->roles()->where('name', $role)->first();
     }
 }

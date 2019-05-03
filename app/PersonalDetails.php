@@ -37,4 +37,8 @@ class PersonalDetails extends Model
     public function cv() {
         return $this->hasOne(CV::class);
     }
+
+    public function profilePicture() {
+        return $this->hasOne(ProfilePicture::class);
+    }
 }

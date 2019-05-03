@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\CV;
 use App\PersonalDetails;
+use App\ProfilePicture;
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager as Image;
+use League\Flysystem\Filesystem;
 
 class PersonalDetailsController extends Controller
 {
@@ -108,11 +111,22 @@ class PersonalDetailsController extends Controller
             'transcription_rate' => ['max:1000'],
             'hourly_rate' => ['max:1000'],
 
-            'cv' => ['required', 'max:500000', 'mimes:docx,pdf'] // Max: 0.5GB (500MB)
+            'profile_picture' => ['max:500000', 'mimes:jpg,jpeg,png'] // Max: 0.5GB (500MB)
         ]);
 
+        if($request->cv) {
+            request()->validate([
+                'cv' => ['required', 'max:500000', 'mimes:docx,pdf'] // Max: 0.5GB (500MB)
+            ]);
+        } else {
+            request()->validate([
+                'cv_change' => ['max:500000', 'mimes:docx,pdf']
+            ]);
+        }
+
         // Update credentials in database
-        $personalDetailsId = User::findOrFail($user_id)->personalDetails->id;
+        $user = User::findOrFail($user_id);
+        $personalDetailsId = $user->personalDetails->id;
         $userDetails = PersonalDetails::findOrFail($personalDetailsId);
 
         $userDetails->first_name = $request->first_name;
@@ -144,14 +158,58 @@ class PersonalDetailsController extends Controller
         $userDetails->save();
 
         // Save CV to database and S3
-        $cvFile = $request->cv;
-        $cv = new CV();
+        $cv = CV::firstOrCreate(['id' => $userDetails->cv->id]);
         $cv->personal_details_id = $userDetails->id;
+        if($request->cv) {
+            $cv->file_name = $request->cv->getClientOriginalName();
+        } else if ($request->cv_change) {
+            $cv->file_name = $request->cv_change->getClientOriginalName();
+        }
         $cv->save();
 
-        // Commit object to s3 with file path and contents of file (key:object)
-        $filePathToStore = '/talentportal/' . $cv->id;
-        \Storage::disk('s3')->put($filePathToStore, file_get_contents($cvFile));
+        if($request->cv) {
+            $cvFile = $request->cv;
+
+            // Commit object to s3 with file path and contents of file (key:object)
+            $filePathToStore = '/talentportal/' . $cv->id;
+            \Storage::disk('s3')->put($filePathToStore, file_get_contents($cvFile));
+            $user->hasCV = 1;
+        }
+
+        if($request->cv_change) {
+            $cvFile = $request->cv_change;
+
+            $filePathToStore = '/talentportal/' . $cv->id;
+            \Storage::disk('s3')->put($filePathToStore, file_get_contents($cvFile));
+
+            $user->hasCV = 1;
+        }
+
+        // Save profile picture to database S3
+        $profilePicture = ProfilePicture::firstOrCreate(['id' => $userDetails->profilePicture->id]);
+        $profilePicture->personal_details_id = $userDetails->id;
+        if($request->profile_picture) {
+            $profilePicture->file_name = $request->profile_picture->getClientOriginalName();
+            $user->hasPFP = 1;
+        }
+        $profilePicture->save();
+
+        // Save changes to user model (hasPFP, hasCV)
+        $user->save();
+
+        // Manipulate profile picture image before storing
+        if ($request->profile_picture) {
+            $pfpFile = $request->profile_picture;
+            $manager = new Image(array('driver' => 'gd'));
+
+            $fileSize = getimagesize($pfpFile);
+            $shortestSide = $fileSize[0] > $fileSize[1] ? $fileSize[1] : $fileSize[0];
+
+            $newPfp = $manager->make($pfpFile)
+                ->crop($shortestSide, $shortestSide, 0, 0)
+                ->resize(500, 500)
+                ->save(storage_path() . '/app/public/user_data/profile_pictures/' . $profilePicture->id);
+        }
 
         return redirect(route('personal_details'))->with([
             'success-message' => 'Personal details successfully updated.'

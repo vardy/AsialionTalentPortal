@@ -180,17 +180,43 @@
             </div>
         </div>
 
-        <!-- CV UPLOAD -->
+        <!-- CV/PROFILE PICTURE UPLOAD -->
         <div id="cv_upload_section" class="row">
+            <div class="col">
+                <div class="form-group">
+                    @if($user->hasCV)
+                        <label for="cv_upload">CV or Résumé (PDF or Docx)</label>
+                        <input type="file" name="cv_change" id="cv_upload" class="form-control-file {{ $errors->has('cv') ? ' is-invalid' : '' }}">
+                        <p>Currently: {{ $user->personalDetails->cv->file_name }}</p>
+                    @else
+                        <label for="cv_upload" class="required">CV or Résumé (PDF or Docx) <span>*</span></label>
+                        <input type="file" name="cv" id="cv_upload" class="form-control-file {{ $errors->has('cv') ? ' is-invalid' : '' }}" required>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="profile_picture_upload">Profile Picture</label>
+                    <input type="file" name="profile_picture" id="profile_picture_upload" class="form-control-file {{ $errors->has('profile_picture') ? ' is-invalid' : '' }}">
+                    @if ($user->hasPFP)
+                        <p>Currently: {{ $user->personalDetails->profilePicture->file_name }}</p>
+                    @endif
+                </div>
+
+                <button id="btn_submit" class="btn btn-outline-light" type="submit">Update</button>
+            </div>
+
             <div class="form-group col">
-                <label for="cv_upload" class="required">CV or Résumé (PDF or Docx) <span>*</span></label>
-                <input type="file" name="cv" class="form-control-file {{ $errors->has('hourly_rate') ? ' is-invalid' : '' }}" required>
+                <label for="user_profile_picture" class="label-block">Current profile picture:</label>
+                <img id="user_profile_picture" src="{{ $user->getProfilePicturePath($user) }}" alt="Your profile picture.">
+                @if($user->hasPFP)
+                    <button id="btn_remove_pfp" class="btn btn-outline-danger" onclick="document.getElementById('form_remove_pfp').submit(); event.preventDefault()">Remove</button>
+                @endif
             </div>
         </div>
+    </form>
 
-        <!-- SUBMIT -->
-        <div class="form-group row">
-            <button id="btn_submit" class="btn-success" type="submit">Update</button>
-        </div>
+    <form id="form_remove_pfp" method="POST" action="{{ '/profile_pictures/' . $user->personalDetails->profilePicture->id }}" enctype=multipart/form-data style="display: none;">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
     </form>
 @stop

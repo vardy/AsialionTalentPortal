@@ -1,5 +1,6 @@
 <?php
 
+use App\ProfilePicture;
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
@@ -75,5 +76,9 @@ class UserTableSeeder extends Seeder
         $cv = new CV();
         $cv->personal_details_id = $personal_details->id;
         $cv->save();
+
+        $profile_picture = new ProfilePicture();
+        $profile_picture->personal_details_id = $personal_details->id;
+        $profile_picture->save();
     }
 }

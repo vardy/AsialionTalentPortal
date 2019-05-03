@@ -1,7 +1,12 @@
 #btn_submit {
-  margin-left: 15px;
   margin-top: 20px;
   margin-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#btn_submit:hover {
+  color: black;
+  background-color: white;
 }
 
 #cv_upload_section {
@@ -14,6 +19,17 @@
 
 #currency_used_label, #for_freelancers_header {
   margin-top: 30px;
+}
+
+#user_profile_picture {
+  width: 200px;
+  height: 200px;
+  border: #1b1e21 2px solid
+}
+
+#btn_remove_pfp {
+  display: block;
+  margin-top: 20px;
 }
 
 .label-block {

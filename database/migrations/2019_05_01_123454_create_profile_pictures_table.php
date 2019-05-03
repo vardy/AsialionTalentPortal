@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCVSTable extends Migration
+class CreateProfilePicturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCVSTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_v_s', function (Blueprint $table) {
+        Schema::create('profile_pictures', function (Blueprint $table) {
             $table->primary('id');
 
             $table->uuid('id');
@@ -32,6 +32,6 @@ class CreateCVSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_v_s');
+        Schema::dropIfExists('profile_pictures');
     }
 }

@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('hasCV')->default(0);
+            $table->boolean('hasPFP')->default(0);
             $table->rememberToken();
         });
     }
