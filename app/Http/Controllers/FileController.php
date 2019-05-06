@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +58,7 @@ class FileController extends Controller
         }
 
         // Check user has ownership of file or admin privileges.
-        if(File::findOrFail($file_id)->invoice->user->id !== auth()->user()->id && !auth()->user()->authorizeRoles(['admin'])) {
+        if(File::findOrFail($file_id)->invoice->user->id !== auth()->user()->id && auth()->user()->hasRole('admin')) {
             abort(404);
         }
 

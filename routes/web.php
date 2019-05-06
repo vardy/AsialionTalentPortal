@@ -8,6 +8,8 @@ Route::get('/', function () {
     return redirect(route('invoices'));
 });
 
+// User controller
+Route::delete('/user/{user_id}', 'UserController@destroy');
 
 // Invoice controllers
 Route::get('/invoices', 'InvoiceController@index')->name('invoices');
@@ -17,6 +19,9 @@ Route::delete('/invoices/{invoice}', 'InvoiceController@destroy');
 
 // File controller
 Route::get('/files/{file}', 'FileController@show');
+
+// CV controller
+Route::get('/cvs/{cv}', 'CVController@show');
 
 // Personal details controller
 Route::get('/personal_details', 'PersonalDetailsController@index')->name('personal_details');
@@ -40,5 +45,17 @@ Route::get('/nda', function () {
     }
 })->name('nda');
 
-// Admin temporary panel
-Route::get('/admin', 'AdminController@index')->name('admin');
+// Admin panel
+// List users - ADMIN ONLY
+Route::get('/admin', 'AdminController@index')->name('admin'); // All users, add user, delete user, change NDA file, all invoices
+Route::get('/admin/user/{user_id}', 'AdminController@show_user'); // User invoices, user personal details, lock details, remove PFP
+Route::get('/admin/invoice/{invoice_id}', 'AdminController@show_invoice'); // Show individual invoice
+Route::put('/admin/update_nda', 'AdminController@update_nda')->name('update_nda'); // Change file in /storage/files/NDA.pdf
+// S3 file controls
+// Display files and links for purging - ADMIN ONLY
+Route::get('/admin/s3', 'AdminController@s3_index')->name('s3');
+Route::delete('/admin/s3/smart_purge', 'AdminController@smart_purge');
+Route::delete('/admin/s3/purge');
+
+// Misc intermediate controllers
+Route::get('/redirect/invoice_delete', 'RedirectController@invoice_delete');

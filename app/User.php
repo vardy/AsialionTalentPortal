@@ -6,11 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Uuids;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use Uuids;
+    use HasRoles;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -54,10 +56,6 @@ class User extends Authenticatable
         return $this->hasMany(Invoice::class);
     }
 
-    public function roles() {
-        return $this->belongsToMany(Role::class);
-    }
-
     public function getProfilePicturePath($user) {
         $profilePictureID =  $user->personalDetails->profilePicture->id;
 
@@ -65,36 +63,5 @@ class User extends Authenticatable
         $actualPath = storage_path() . '/app/public/user_data/profile_pictures/' . $profilePictureID;
         $defaultPath = '/storage/user_data/profile_pictures/default.png';
         return file_exists($actualPath) ? $virtualPath : $defaultPath;
-    }
-
-    /**
-     * @param string|array $roles
-     * @return boolean
-     */
-    public function authorizeRoles($roles) {
-        if (is_array($roles)) {
-            return $this->hasAnyRole($roles) ||
-                abort(401, 'This action is unauthorized.');
-        }
-        return $this->hasRole($roles) ||
-            abort(401, 'This action is unauthorized.');
-    }
-
-    /**
-     * Check multiple roles
-     * @param array $roles
-     * @return boolean
-     */
-    public function hasAnyRole($roles) {
-        return null !== $this->roles()->whereIn('name', $roles)->first();
-    }
-
-    /**
-     * Check one role
-     * @param string $role
-     * @return boolean
-     */
-    public function hasRole($role) {
-        return null !== $this->roles()->where('name', $role)->first();
     }
 }

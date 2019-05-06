@@ -1,7 +1,8 @@
 <?php
 
-use App\Role;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleTableSeeder extends Seeder
 {
@@ -12,14 +13,37 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_admin = new Role();
-        $role_admin->name = 'admin';
-        $role_admin->description = 'A superuser';
-        $role_admin->save();
+        // // // // // // // // // // // //
+        // CREATE ROLES
+        // // // // // // // // // // // //
 
-        $role_user = new Role();
-        $role_user->name = 'user';
-        $role_user->description = 'A normal user';
-        $role_user->save();
+        $role_admin = Role::create([
+            'name' => 'admin'
+        ]);
+
+        $role_user = Role::create([
+            'name' => 'user'
+        ]);
+
+        // // // // // // // // // // // //
+        // CREATE SPECIFIC PERMISSIONS
+        // // // // // // // // // // // //
+
+        $delete_invoices = Permission::create([
+            'name' => 'delete invoices'
+        ]);
+
+
+        // // // // // // // // // // // //
+        // ASSIGN PERMISSIONS TO ROLES
+        // // // // // // // // // // // //
+
+        $role_user->syncPermissions([
+            $delete_invoices
+        ]);
+
+        $role_admin->syncPermissions([
+            $delete_invoices
+        ]);
     }
 }

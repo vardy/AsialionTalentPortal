@@ -233,6 +233,6 @@ class InvoiceController extends Controller
         // Delete invoice entry
         $invoice->delete();
 
-        return redirect(route('invoices'));
+        return redirect()->action('RedirectController@invoice_delete');
     }
 }

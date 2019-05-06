@@ -167,6 +167,7 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         'Webpatser\Countries\CountriesServiceProvider',
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...
