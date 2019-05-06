@@ -64,6 +64,20 @@
                 </table>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    Create new user
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p><a href="/admin/register">Click here to go to registration page.</a></p>
+            </div>
+        </div>
     </div>
 
     <div class="panel-section">

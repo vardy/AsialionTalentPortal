@@ -48,6 +48,8 @@ Route::get('/nda', function () {
 // Admin panel
 // List users - ADMIN ONLY
 Route::get('/admin', 'AdminController@index')->name('admin'); // All users, add user, delete user, change NDA file, all invoices
+Route::get('/admin/register', 'AdminController@show_registration_form');
+Route::post('/admin/register', 'AdminController@create_user');
 Route::get('/admin/user/{user_id}', 'AdminController@show_user'); // User invoices, user personal details, lock details, remove PFP
 Route::get('/admin/invoice/{invoice_id}', 'AdminController@show_invoice'); // Show individual invoice
 Route::put('/admin/update_nda', 'AdminController@update_nda')->name('update_nda'); // Change file in /storage/files/NDA.pdf

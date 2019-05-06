@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\CV;
 use App\Invoice;
+use App\PersonalDetails;
+use App\ProfilePicture;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller {
@@ -103,5 +107,57 @@ class AdminController extends Controller {
         return view('admin.user', [
            'user' => $user
         ]);
+    }
+
+    public function show_registration_form() {
+
+        if(auth()->user()) {
+            if(!auth()->user()->hasRole('admin')) {
+                abort(403);
+            }
+        } else {
+            return redirect('/login');
+        }
+
+        return view('admin.register');
+    }
+
+    public function create_user(Request $request) {
+
+        if(auth()->user()) {
+            if(!auth()->user()->hasRole('admin')) {
+                abort(403);
+            }
+        } else {
+            return redirect('/login');
+        }
+
+        request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->assignRole('user');
+
+        $personal_details = new PersonalDetails();
+        $personal_details->user_id = $user->id;
+        $personal_details->save();
+
+        $cv = new CV();
+        $cv->personal_details_id = $personal_details->id;
+        $cv->save();
+
+        $profile_picture = new ProfilePicture();
+        $profile_picture->personal_details_id = $personal_details->id;
+        $profile_picture->save();
+
+        return redirect(route('admin'));
     }
 }
