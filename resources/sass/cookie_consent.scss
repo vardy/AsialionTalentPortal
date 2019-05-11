@@ -1,0 +1,18 @@
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 38px;
+  line-height: 38px; /* Line-height same as height to vertically center text */
+  width: 100vw;
+  background-color: black;
+  text-align: center;
+  align-items: center;
+  vertical-align: center;
+}
+
+.cookie-consent__agree {
+  height: 80%;
+  margin-left: 15px;
+  font-size: 0.8em;
+}

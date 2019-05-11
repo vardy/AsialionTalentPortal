@@ -22,6 +22,7 @@
 
     <!-- Local CSS -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/cookie_consent.css') }}" rel="stylesheet">
 
     @yield('imports')
 </head>
@@ -89,5 +90,7 @@
             ],
         });
     </script>
+
+    @include('cookieConsent::index')
 </body>
 </html>
