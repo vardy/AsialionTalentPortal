@@ -30,28 +30,12 @@
         </div>
     @endif
 
-    <!--
-        Table to display invoices
-    <table class="table dataTable">
-        <thead>
-            <tr>
-                <th scope="col">Invoice Number</th>
-                <th scope="col">Total</th>
-                <th scope="col"># of POs</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($invoices as $invoice)
-                <tr class="table-active">
-                    <th scope="row"><a href="/invoices/{{ $invoice->id }}"> {{ $invoice->invoice_number }} </a></th>
-                    <td> THB {{ $invoice->total }} </td>
-                    <td> {{ $invoice->num_of_pos }} </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>-->
-
     <h1 id="new_invoice_header">New Invoice</h1>
+
+    <p id="upload-prologue">Please accumulate all jobs into one invoice at the end of each month for submission. DO NOT submit your invoice
+        prior to completion of your assignment.<br><br>Payment depends on your delivery of high-quality work by the agreed
+        deadline. Evaluation and incorporation of 1st-round revisions is the translator's responsibility and part of the
+        original fee.</p>
 
     <form id="form_create" method="POST" action="{{ route('invoices') }}" enctype=multipart/form-data>
         {{ csrf_field() }}
