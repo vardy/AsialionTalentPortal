@@ -21,6 +21,8 @@ class CreatePersonalDetailsTable extends Migration
 
             $table->timestamps();
 
+            $table->softDeletes();
+
             $table->mediumText('first_name')->nullable(); // Required
             $table->mediumText('last_name')->nullable(); // Required
             $table->mediumText('email')->nullable(); // Required

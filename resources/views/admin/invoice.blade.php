@@ -18,15 +18,16 @@
 
     <div class="panel-section">
         <div id="invoice_stats">
+            <p>Submitter: <a href="/admin/user/{{ $invoice->user->id }}">{{ $invoice->user->name }}</a></p>
             <p>Invoice number: {{ $invoice->invoice_number }}</p>
             <p>Total (from purchase orders): THB {{ $invoice->total }}</p>
-            <p>Number of files: {{ $invoice->num_of_files }}</p>
             <p>Number of purchase orders: {{ $invoice->num_of_pos }}</p>
+            <p>File attached: @if($invoice->file) Yes @else No @endif</p>
         </div>
     </div>
 
     <div class="panel-section">
-        <h2>Files</h2>
+        <h2>File</h2>
 
         <table class="table dataTable">
             <thead>
@@ -38,14 +39,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($invoice->files as $file)
+                @if($invoice->file)
                     <tr class="table-active">
-                        <th scope="row"><a href="/files/{{ $file->id }}"> {{ $file->file_name }} </a></th>
-                        <td> {{ $file->file_size }} </td>
-                        <td> {{ $file->file_mime }} </td>
-                        <td> {{ $file->created_at }} </td>
+                        <th scope="row"><a href="/files/{{ $invoice->file->id }}"> {{ $invoice->file->file_name }} </a></th>
+                        <td> {{ $invoice->file->file_size }} </td>
+                        <td> {{ $invoice->file->file_mime }} </td>
+                        <td> {{ $invoice->file->created_at }} </td>
                     </tr>
-                @endforeach
+                @endif
             </tbody>
         </table>
     </div>

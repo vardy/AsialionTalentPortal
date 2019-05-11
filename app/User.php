@@ -3,9 +3,8 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Uuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -13,6 +12,10 @@ class User extends Authenticatable
     use Notifiable;
     use Uuids;
     use HasRoles;
+    use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
+    protected $softCascade = ['invoices', 'personalDetails'];
 
     /**
      * Indicates if the IDs are auto-incrementing.

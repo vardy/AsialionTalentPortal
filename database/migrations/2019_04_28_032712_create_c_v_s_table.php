@@ -22,6 +22,8 @@ class CreateCVSTable extends Migration
             $table->mediumText('file_name')->nullable();
 
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

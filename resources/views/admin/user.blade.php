@@ -56,7 +56,6 @@
                 <tr>
                     <th scope="col">Invoice Number</th>
                     <th scope="col">Total</th>
-                    <th scope="col">Num of Files</th>
                     <th scope="col">Num of Purchase Orders</th>
                     <th scope="col">Created At</th>
                 </tr>
@@ -66,7 +65,6 @@
                     <tr>
                         <th scope="row"><a href="/admin/invoice/{{ $invoice->id }}">{{ $invoice->invoice_number }}</a></th>
                         <td>{{ $invoice->total }}</td>
-                        <td>{{ $invoice->num_of_files }}</td>
                         <td>{{ $invoice->num_of_pos }}</td>
                         <td>{{ $invoice->created_at }}</td>
                     </tr>

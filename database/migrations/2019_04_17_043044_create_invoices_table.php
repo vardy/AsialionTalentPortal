@@ -21,10 +21,11 @@ class CreateInvoicesTable extends Migration
 
             $table->timestamps();
 
+            $table->softDeletes();
+
             $table->decimal('total')->default(0.00);
             $table->string('invoice_number')->nullable();
             $table->integer('num_of_pos')->default(0);
-            $table->integer('num_of_files')->default(0);
         });
     }
 

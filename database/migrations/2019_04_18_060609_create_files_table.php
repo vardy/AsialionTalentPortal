@@ -21,6 +21,8 @@ class CreateFilesTable extends Migration
 
             $table->timestamps();
 
+            $table->softDeletes();
+
             $table->string('file_name');
             $table->string('original_file_name');
             $table->string('file_size');

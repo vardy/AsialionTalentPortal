@@ -48,18 +48,6 @@ class InvoiceController extends Controller
     {
         $rules = [];
         $numOfPOs = 0;
-        $numOfFiles = 0;
-
-        /* File validation
-         * Throws error if files dont exist
-         * */
-        try {
-            foreach($request->allFiles()['files'] as $key => $value) {
-                $rules["files.{$key}"] = 'max:1000000';
-                $numOfFiles++;
-            }
-
-        } catch (\Exception $ex) {}
 
         /* Catches error if fields don't exist
          * (if user did not add any purchase orders)
@@ -81,7 +69,8 @@ class InvoiceController extends Controller
         } catch (\Exception $ex) {}
 
         $rules["ndaCheck"] = 'required';
-        $rules["invoice_number"] = 'max:255';
+        $rules["invoice_number"] = 'max:255|required';
+        $rules["file"] = 'max:1000000';
 
         $validator = Validator::make($request->all(), $rules);
 
@@ -90,7 +79,6 @@ class InvoiceController extends Controller
             $invoice = new Invoice();
             $invoice->user_id = auth()->user()->id;
             $invoice->num_of_pos = $numOfPOs;
-            $invoice->num_of_files = $numOfFiles;
 
             // Setting invoice number based off of user input
             $empty_invoice_number =  $request->invoice_number == null;
@@ -105,25 +93,23 @@ class InvoiceController extends Controller
             }
             $invoice->save();
 
-            // Save files to database and S3
+            // Save file to database and S3
             // Assign invoice ID to files
-            if ($numOfFiles > 0) {
-                $allFiles = $request->allFiles()['files'];
-                foreach ($allFiles as $file) {
+            if($request->file) {
+                $file = $request->file;
 
-                    $fileEntry = new File();
-                    $fileEntry->invoice_id = $invoice->id;
-                    $fileEntry->file_name = $file->getClientOriginalName();
-                    $fileEntry->original_file_name = $file->getClientOriginalName();
-                    $fileEntry->file_size = (string) $file->getSize();
-                    $fileEntry->file_extension = $file->getClientOriginalExtension();
-                    $fileEntry->file_mime = $file->getClientMimeType();
-                    $fileEntry->save();
+                $fileEntry = new File();
+                $fileEntry->invoice_id = $invoice->id;
+                $fileEntry->file_name = $file->getClientOriginalName();
+                $fileEntry->original_file_name = $file->getClientOriginalName();
+                $fileEntry->file_size = (string) $file->getSize();
+                $fileEntry->file_extension = $file->getClientOriginalExtension();
+                $fileEntry->file_mime = $file->getClientMimeType();
+                $fileEntry->save();
 
-                    // Commit object to s3 with file path and contents of file (key:object)
-                    $filePathToStore = '/talentportal/' . $fileEntry->id;
-                    \Storage::disk('s3')->put($filePathToStore, file_get_contents($file));
-                }
+                // Commit object to s3 with file path and contents of file (key:object)
+                $filePathToStore = '/talentportal/' . $fileEntry->id;
+                \Storage::disk('s3')->put($filePathToStore, file_get_contents($file));
             }
 
             // Save POs to database
@@ -212,8 +198,9 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::findOrFail($id);
 
-        // Delete files belonging to invoice
-        foreach ($invoice->files as $file) {
+        // Delete file belonging to invoice
+        if($invoice->file) {
+            $file = $invoice->file;
 
             // Delete files from S3
             $s3PathToFile = '/talentportal/' . $file->id;

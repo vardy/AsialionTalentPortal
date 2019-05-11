@@ -58,8 +58,10 @@ class FileController extends Controller
         }
 
         // Check user has ownership of file or admin privileges.
-        if(File::findOrFail($file_id)->invoice->user->id !== auth()->user()->id && auth()->user()->hasRole('admin')) {
-            abort(404);
+        if(File::findOrFail($file_id)->invoice->user->id !== auth()->user()->id) {
+            if(!auth()->user()->hasRole('admin')) {
+                abort(404);
+            }
         }
 
         return response()->stream(function() use ($filePathExpected) {

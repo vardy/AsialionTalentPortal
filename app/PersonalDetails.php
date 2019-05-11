@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PersonalDetails extends Model
 {
     use Uuids;
+    use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
+    protected $softCascade = ['cv', 'profilePicture'];
 
     /**
      * Indicates if the IDs are auto-incrementing.

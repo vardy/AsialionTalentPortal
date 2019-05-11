@@ -3,10 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invoice extends Model
 {
     use Uuids;
+    use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
+    protected $softCascade = ['file', 'purchase_orders'];
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -21,15 +27,15 @@ class Invoice extends Model
      * @var array
      */
     protected $fillable = [
-        'total', 'invoice_number', 'num_of_pos', 'num_of_files'
+        'total', 'invoice_number', 'num_of_pos'
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function files() {
-        return $this->hasMany(File::class);
+    public function file() {
+        return $this->hasOne(File::class);
     }
 
     public function purchase_orders() {

@@ -32,14 +32,12 @@
 
     <!--
         Table to display invoices
-    -->
     <table class="table dataTable">
         <thead>
             <tr>
                 <th scope="col">Invoice Number</th>
                 <th scope="col">Total</th>
                 <th scope="col"># of POs</th>
-                <th scope="col"># of Files</th>
             </tr>
         </thead>
         <tbody>
@@ -48,11 +46,10 @@
                     <th scope="row"><a href="/invoices/{{ $invoice->id }}"> {{ $invoice->invoice_number }} </a></th>
                     <td> THB {{ $invoice->total }} </td>
                     <td> {{ $invoice->num_of_pos }} </td>
-                    <td> {{ $invoice->num_of_files }} </td>
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table>-->
 
     <h1 id="new_invoice_header">New Invoice</h1>
 
@@ -62,16 +59,16 @@
         <div class="row">
             <!-- Invoice number section -->
             <div class="col">
-                <label for="invoice_number">Invoice number (optional)</label>
-                <textarea class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="invoice_number" name="invoice_number" rows="1">{{ old('invoice_number') }}</textarea>
+                <label for="invoice_number">Invoice number</label>
+                <textarea class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="invoice_number" name="invoice_number" rows="1" required>{{ old('invoice_number') }}</textarea>
                 <small id="labelHelp" class="form-text text-muted">Max 255 characters.</small>
             </div>
 
             <!-- File upload section -->
             <div class="col">
-                <label for="upload_file">Attach files</label>
-                <input type="file" name="files[]" class="form-control-file" multiple>
-                <small id="labelHelp" class="form-text text-muted">You may attach multiple files at once.</small>
+                <label for="upload_file">Attach file</label>
+                <input type="file" name="file" class="form-control-file" multiple>
+                <small id="labelHelp" class="form-text text-muted">You may attach one file at a time.</small>
             </div>
         </div>
 

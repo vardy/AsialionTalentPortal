@@ -101,7 +101,6 @@
                         <th scope="col">Invoice Number</th>
                         <th scope="col">User</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Num of Files</th>
                         <th scope="col">Num of Purchase Orders</th>
                     </tr>
                     </thead>
@@ -111,7 +110,6 @@
                             <th scope="row"><a href="/admin/invoice/{{ $invoice->id }}"> {{ $invoice->invoice_number }} </a></th>
                             <th scope="row"><a href="/admin/user/{{ $user->id }}"> {{ $invoice->user->name }} </a></th>
                             <td> {{ $invoice->total }} </td>
-                            <td> {{ $invoice->num_of_files }} </td>
                             <td> {{ $invoice->num_of_pos }} </td>
                         </tr>
                     @endforeach
