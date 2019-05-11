@@ -43,12 +43,14 @@ h1 {
 }
 
 #side-nav {
-  position: relative;
+  position: fixed;
   padding-top: 16vh;
   padding-left: 0;
   padding-right: 0;
   background-color: $background-color-darker;
-  height: 92.5vh;
+  height: 100vh;
+  left: 0;
+  top: 0;
 
 }
 
@@ -119,7 +121,8 @@ h1 {
 }
 
 #content-area {
-  padding-left: 30px;
+  width: 80vw;
+  margin-left: 160px;
 }
 
 // Table customisations

@@ -34,7 +34,7 @@
 
     <div class="container">
         <div class="row">
-            <div id="side-nav" class="col-lg-2 col-md-2">
+            <div id="side-nav">
 
                 <img src="/storage/files/AL_LOGO.png" alt="AsiaLion Logo">
 
@@ -66,7 +66,7 @@
                 @endauth
             </div>
 
-            <div id="content-area" class="col-lg-10 col-md-10">
+            <div id="content-area">
                 @yield('content')
             </div>
         </div>
