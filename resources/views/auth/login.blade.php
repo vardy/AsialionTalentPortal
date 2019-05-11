@@ -20,6 +20,9 @@
         <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-LS4/wo5Z/8SLpOLHs0IbuPAGOWTx30XSoZJ8o7WKH0UJhRpjXXTpODOjfVnNjeHu" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+        <!-- Particles.JS -->
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
         <!-- Local CSS -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         <link href="{{ mix('css/login.css') }}" rel="stylesheet">
@@ -33,6 +36,8 @@
     </form>
 
     <div class="custom-container">
+
+        <div id="particles-js"></div>
 
         <div class="vertical-centered-containers">
 
