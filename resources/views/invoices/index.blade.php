@@ -89,7 +89,7 @@
                 i++;
                 $('#dynamic_field').append("<tr class=\"dynamic-row\" id=\"dynamic-row-" + i + "\">\n" +
                     "                    <td>\n" +
-                    "                        <label for=\"po" + i + "_number\">Order number</label>\n" +
+                    "                        <label for=\"po" + i + "_number\">Purchase order number</label>\n" +
                     "                        <textarea class=\"form-control po_field\" id=\"po" + i + "_number\" name=\"po_number[]\" rows=\"1\" required></textarea>\n" +
                     "                    </td>\n" +
                     "                    <td>\n" +
