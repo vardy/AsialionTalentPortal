@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <meta name="theme-color" content="#E91D25">
+        <meta name="description" content="Portal for employees at AsiaL10n.">
+        <meta name="author" content="Jarred Vardy">
+        <meta name="keywords" content="Translation,Localisation,Portal,Talent,Employee,Asialion,Singapore,Bangkok">
+
         <title>Login | Talent Portal</title>
 
         <!-- Bootstrap / Popper -->
