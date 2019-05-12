@@ -16,6 +16,9 @@
         <!-- Bootstrap -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+        <!-- Particles.JS -->
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
         <!-- Local CSS -->
         <link href="{{ mix('css/login.css') }}" rel="stylesheet">
         <link href="{{ mix('css/cookie_consent.css') }}" rel="stylesheet">
@@ -81,30 +84,7 @@
     <script src="{{ mix('/js/manifest.js') }}"></script>
     <script src="{{ mix('/js/vendor.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
-    <!-- <script src="{{ mix('/js/particlesjs.js') }}"></script> -->
-
-    <script type="text/javascript">
-        function runParticlesOnLoad() {
-            var particlesCDN = document.createElement("script");
-            particlesCDN.src = "http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-
-            var particlesLocal = document.createElement("script");
-            particlesLocal.src = '{{ mix('/js/particlesjs.js') }}';
-
-            document.body.appendChild(particlesCDN);
-            document.body.appendChild(particlesLocal);
-        }
-
-        if (window.addEventListener) {
-            window.addEventListener("load", runParticlesOnLoad, false);
-
-        } else if (window.attachEvent){
-            window.attachEvent("onload", runParticlesOnLoad);
-
-        } else {
-            window.onload = runParticlesOnLoad;
-        }
-    </script>
+    <script src="{{ mix('/js/particlesjs.js') }}"></script>
 
     @include('cookieConsent::index')
 
