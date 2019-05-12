@@ -1,3 +1,17 @@
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body, html {
+  font-family: $body-font;
+  background-color: $background-color;
+  color: $font-color;
+  padding: 0;
+}
+
 .custom-container {
   width: 100vw;
 
