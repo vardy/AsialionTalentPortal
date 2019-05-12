@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/pdfobject.js', 'public/js')
+    .js('resources/js/particlesjs.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/invoices.scss', 'public/css')
     .sass('resources/sass/nda.scss', 'public/css')
