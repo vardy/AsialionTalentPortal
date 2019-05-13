@@ -108,6 +108,12 @@ class PersonalDetailsController extends Controller
             'transcription_rate' => ['max:1000'],
             'hourly_rate' => ['max:1000'],
 
+            'account_name' => ['max:1000'],
+            'account_number' => ['max:1000'],
+            'bank_name' => ['max:1000'],
+            'bank_address' => ['max:1000'],
+            'swift_code' => ['max:1000'],
+
             'profile_picture' => ['max:500000', 'mimes:jpg,jpeg,png'] // Max: 0.5GB (500MB)
         ]);
 
@@ -148,6 +154,12 @@ class PersonalDetailsController extends Controller
         $userDetails->editing_rate = $request->editing_rate;
         $userDetails->transcription_rate = $request->transcription_rate;
         $userDetails->hourly_rate = $request->hourly_rate;
+
+        $userDetails->account_name = $request->account_name;
+        $userDetails->account_number = $request->account_number;
+        $userDetails->bank_name = $request->bank_name;
+        $userDetails->bank_address = $request->bank_address;
+        $userDetails->swift_code = $request->swift_code;
 
         $userDetails->save();
 

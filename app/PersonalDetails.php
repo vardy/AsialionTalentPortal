@@ -29,9 +29,10 @@ class PersonalDetails extends Model
         'first_name', 'last_name', 'email', 'skype_id',
         'country_of_residence', 'mobile_number', 'home_number',
         'highest_education', 'work_experience', 'industry_specialization',
-        'language_pairs', 'tools', 'turnaround_per_day',
+        'language_pairs', 'tools', 'turnaround_per_day', 'currency_used',
         'translation_rate', 'editing_rate', 'transcription_rate',
-        'hourly_rate'
+        'hourly_rate', 'account_name', 'account_number', 'bank_name',
+        'bank_address', 'swift_code'
     ];
 
     public function user() {

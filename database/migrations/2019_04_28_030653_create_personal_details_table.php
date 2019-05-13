@@ -41,11 +41,16 @@ class CreatePersonalDetailsTable extends Migration
 
             $table->mediumText('currency_used')->nullable();
 
-            // Freelancers
             $table->mediumText('translation_rate')->nullable();
             $table->mediumText('editing_rate')->nullable();
             $table->mediumText('transcription_rate')->nullable();
             $table->mediumText('hourly_rate')->nullable();
+
+            $table->mediumText('account_name')->nullable();
+            $table->mediumText('account_number')->nullable();
+            $table->mediumText('bank_name')->nullable();
+            $table->mediumText('bank_address')->nullable();
+            $table->mediumText('swift_code')->nullable();
         });
     }
 

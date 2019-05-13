@@ -124,6 +124,10 @@
             </div>
         </div>
 
+        <div class="row">
+            <h2>Rates</h2>
+        </div>
+
         <!-- Currency -->
         <div class="row">
             <div class="form-group col">
@@ -138,7 +142,7 @@
             </div>
         </div>
 
-        <!-- FREELANCER POSITIONS -->
+        <!-- RATES -->
         <div class="row">
             <div class="form-group col">
                 <label for="translation_rate">Translation Rate Per Source Word</label>
@@ -161,6 +165,50 @@
                 <label for="hourly_rate">Rate Per Hour Rate</label>
                 <textarea class="form-control {{ $errors->has('hourly_rate') ? ' is-invalid' : '' }}" id="hourly_rate" name="hourly_rate" rows="1">@if(old('hourly_rate')){{ old('hourly_rate') }}@else{{ $user->personalDetails->hourly_rate }}@endif</textarea>
             </div>
+        </div>
+
+        <div class="row">
+            <h2>Bank Details</h2>
+        </div>
+
+        <!-- BANK DETAILS -->
+        <div class="row">
+            <div class="form-group col">
+                <label for="account_name">Account Name</label>
+                <textarea class="form-control {{ $errors->has('account_name') ? ' is-invalid' : '' }}" id="account_name" name="account_name" rows="1">@if(old('account_name')){{ old('account_name') }}@else{{ $user->personalDetails->account_name }}@endif</textarea>
+            </div>
+
+            <div class="form-group col">
+                <label for="account_number">Account Number</label>
+                <textarea class="form-control {{ $errors->has('account_number') ? ' is-invalid' : '' }}" id="account_number" name="account_number" rows="1">@if(old('account_number')){{ old('account_number') }}@else{{ $user->personalDetails->account_number }}@endif</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label for="bank_name">Bank Name</label>
+                <textarea class="form-control {{ $errors->has('bank_name') ? ' is-invalid' : '' }}" id="bank_name" name="bank_name" rows="1">@if(old('bank_name')){{ old('bank_name') }}@else{{ $user->personalDetails->bank_name }}@endif</textarea>
+            </div>
+
+            <div class="form-group col">
+                <label for="swift_code">Swift Code</label>
+                <textarea class="form-control {{ $errors->has('swift_code') ? ' is-invalid' : '' }}" id="swift_code" name="swift_code" rows="1">@if(old('swift_code')){{ old('swift_code') }}@else{{ $user->personalDetails->swift_code }}@endif</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label for="bank_address">Bank Address</label>
+                <textarea class="form-control {{ $errors->has('bank_address') ? ' is-invalid' : '' }}" id="bank_address" name="bank_address" rows="3">@if(old('bank_address')){{ old('bank_address') }}@else{{ $user->personalDetails->bank_address }}@endif</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <p id="please-ensure-message">Please ensure your bank details are current.</p>
+        </div>
+
+        <div class="row">
+            <h2>Submit</h2>
         </div>
 
         <!-- CV/PROFILE PICTURE UPLOAD -->
