@@ -96,7 +96,7 @@ class PersonalDetailsController extends Controller
 
             'highest_education' => ['required', 'max:1000'],
             'professional_experience' => ['required', 'max:2000'],
-            'industry_experience' => ['required', 'max:2000'],
+            'industry_specialization' => ['required', 'max:2000'],
             'language_pairs' => ['required', 'max:1000'],
 
             'tools' => ['max:2000'],
@@ -140,7 +140,7 @@ class PersonalDetailsController extends Controller
 
         $userDetails->highest_education = $request->highest_education;
         $userDetails->professional_experience = $request->professional_experience;
-        $userDetails->industry_experience = $request->industry_experience;
+        $userDetails->industry_specialization = $request->industry_specialization;
         $userDetails->language_pairs = $request->language_pairs;
 
         $userDetails->tools = $request->tools;

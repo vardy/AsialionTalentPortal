@@ -98,9 +98,9 @@
 
         <div class="row">
             <div class="form-group col">
-                <label for="industry_experience" class="required">Industry Experience <span>*</span></label>
-                <textarea class="form-control {{ $errors->has('industry_experience') ? ' is-invalid' : '' }}" id="industry_experience" name="industry_experience" rows="3" required>@if(old('industry_experience')){{ old('industry_experience') }}@else{{ $user->personalDetails->industry_experience }}@endif</textarea>
-                <small id="industry_experience_small_text" class="form-text text-muted">For example: Surveys, IT, Marketing, Transcreation, Transcription, E-Commerce, Engineering, Gaming, Finance, etc.</small>
+                <label for="industry_specialization" class="required">Industry Specialization <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('industry_specialization') ? ' is-invalid' : '' }}" id="industry_specialization" name="industry_specialization" rows="3" required>@if(old('industry_specialization')){{ old('industry_specialization') }}@else{{ $user->personalDetails->industry_specialization }}@endif</textarea>
+                <small id="industry_specialization_small_text" class="form-text text-muted">For example: Surveys, IT, Marketing, Transcreation, Transcription, E-Commerce, Engineering, Gaming, Finance, etc.</small>
             </div>
 
             <div class="form-group col">

@@ -28,7 +28,7 @@ class PersonalDetails extends Model
     protected $fillable = [
         'first_name', 'last_name', 'email', 'skype_id',
         'country_of_residence', 'mobile_number', 'home_number',
-        'highest_education', 'professional_experience', 'industry_experience',
+        'highest_education', 'professional_experience', 'industry_specialization',
         'language_pairs', 'tools', 'turnaround_per_day',
         'latest_remuneration', 'expected_remuneration',
         'translation_rate', 'editing_rate', 'transcription_rate',

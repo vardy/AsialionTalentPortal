@@ -34,7 +34,7 @@ class CreatePersonalDetailsTable extends Migration
 
             $table->mediumText('highest_education')->nullable(); // Required
             $table->mediumText('professional_experience')->nullable(); // Required
-            $table->mediumText('industry_experience')->nullable(); // Required
+            $table->mediumText('industry_specialization')->nullable(); // Required
             $table->mediumText('language_pairs')->nullable(); // Required
             $table->mediumText('tools')->nullable();
             $table->mediumText('turnaround_per_day')->nullable();
