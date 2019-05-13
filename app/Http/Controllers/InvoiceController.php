@@ -79,18 +79,7 @@ class InvoiceController extends Controller
             $invoice = new Invoice();
             $invoice->user_id = auth()->user()->id;
             $invoice->num_of_pos = $numOfPOs;
-
-            // Setting invoice number based off of user input
-            $empty_invoice_number =  $request->invoice_number == null;
-            if (!$empty_invoice_number) {
-                $invoice->invoice_number = $request->invoice_number;
-            }
-            $invoice->save();
-
-            // If no user input, set invoice number to first 5 chars of invoice ID
-            if ($empty_invoice_number) {
-                $invoice->invoice_number = substr($invoice->id, 0, 5);
-            }
+            $invoice->invoice_number = $request->invoice_number;
             $invoice->save();
 
             // Save file to database and S3
