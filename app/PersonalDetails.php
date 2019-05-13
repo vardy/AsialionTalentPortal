@@ -30,7 +30,6 @@ class PersonalDetails extends Model
         'country_of_residence', 'mobile_number', 'home_number',
         'highest_education', 'work_experience', 'industry_specialization',
         'language_pairs', 'tools', 'turnaround_per_day',
-        'latest_remuneration', 'expected_remuneration',
         'translation_rate', 'editing_rate', 'transcription_rate',
         'hourly_rate'
     ];

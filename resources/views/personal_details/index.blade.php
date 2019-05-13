@@ -138,24 +138,7 @@
             </div>
         </div>
 
-        <!-- PERMANENT POSITIONS -->
-        <h2>For Permanent Positions</h2>
-
-        <div class="row">
-            <div class="form-group col">
-                <label for="latest_remuneration">Current/Last Remuneration</label>
-                <textarea class="form-control {{ $errors->has('latest_remuneration') ? ' is-invalid' : '' }}" id="latest_remuneration" name="latest_remuneration" rows="1">@if(old('latest_remuneration')){{ old('latest_remuneration') }}@else{{ $user->personalDetails->latest_remuneration }}@endif</textarea>
-            </div>
-
-            <div class="form-group col">
-                <label for="expected_remuneration">Expected Remuneration</label>
-                <textarea class="form-control {{ $errors->has('expected_remuneration') ? ' is-invalid' : '' }}" id="expected_remuneration" name="expected_remuneration" rows="1">@if(old('expected_remuneration')){{ old('expected_remuneration') }}@else{{ $user->personalDetails->expected_remuneration }}@endif</textarea>
-            </div>
-        </div>
-
         <!-- FREELANCER POSITIONS -->
-        <h2 id="for_freelancers_header">For Freelancers</h2>
-
         <div class="row">
             <div class="form-group col">
                 <label for="translation_rate">Translation Rate Per Source Word</label>

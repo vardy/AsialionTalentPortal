@@ -103,9 +103,6 @@ class PersonalDetailsController extends Controller
             'turnaround_per_day' => ['max:2000'],
             'currency_used' => ['required'],
 
-            'latest_remuneration' => ['max:1000'],
-            'expected_remuneration'  => ['max:1000'],
-
             'translation_rate' => ['max:1000'],
             'editing_rate' => ['max:1000'],
             'transcription_rate' => ['max:1000'],
@@ -146,9 +143,6 @@ class PersonalDetailsController extends Controller
         $userDetails->tools = $request->tools;
         $userDetails->turnaround_per_day = $request->turnaround_per_day;
         $userDetails->currency_used = $request->currency_used;
-
-        $userDetails->latest_remuneration = $request->latest_remuneration;
-        $userDetails->expected_remuneration = $request->expected_remuneration;
 
         $userDetails->translation_rate = $request->translation_rate;
         $userDetails->editing_rate = $request->editing_rate;
