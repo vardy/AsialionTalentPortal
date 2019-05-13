@@ -35,19 +35,19 @@
         <div class="row">
             <div class="form-group col">
                 <label for="first_name" class="required">First/Given Name <span>*</span></label>
-                <textarea class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" id="first_name" name="first_name" rows="1" required>@if(old('first_name')){{ old('first_name') }}@else{{ $user->personalDetails->first_name }}@endif</textarea>
+                <textarea class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" id="first_name" name="first_name" rows="1" required @if($user->personalDetails->first_name) disabled @endif >@if(old('first_name')){{ old('first_name') }}@else{{ $user->personalDetails->first_name }}@endif</textarea>
             </div>
 
             <div class="form-group col">
                 <label for="last_name" class="required">Last/Family Name <span>*</span></label>
-                <textarea class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}" id="last_name" name="last_name" rows="1" required>@if(old('last_name')){{ old('last_name') }}@else{{ $user->personalDetails->last_name }}@endif</textarea>
+                <textarea class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}" id="last_name" name="last_name" rows="1" required @if($user->personalDetails->last_name) disabled @endif >@if(old('last_name')){{ old('last_name') }}@else{{ $user->personalDetails->last_name }}@endif</textarea>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col">
                 <label for="email" class="required">Email <span>*</span></label>
-                <textarea class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" rows="1" required>@if(old('email')){{ old('email') }}@else{{ $user->personalDetails->email }}@endif</textarea>
+                <textarea class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" rows="1" required @if($user->personalDetails->email) disabled @endif >@if(old('email')){{ old('email') }}@else{{ $user->personalDetails->email }}@endif</textarea>
             </div>
 
             <div class="form-group col">
@@ -73,13 +73,13 @@
         <div class="row">
             <div class="form-group col">
                 <label for="mobile_number" class="required">Mobile Phone Number <span>*</span></label>
-                <textarea class="form-control {{ $errors->has('mobile_number') ? ' is-invalid' : '' }}" id="mobile_number" name="mobile_number" rows="1" required>@if(old('mobile_number')){{ old('mobile_number') }}@else{{ $user->personalDetails->mobile_number }}@endif</textarea>
+                <textarea class="form-control {{ $errors->has('mobile_number') ? ' is-invalid' : '' }}" id="mobile_number" name="mobile_number" rows="1" required @if($user->personalDetails->mobile_number) disabled @endif >@if(old('mobile_number')){{ old('mobile_number') }}@else{{ $user->personalDetails->mobile_number }}@endif</textarea>
                 <small id="mobile_number_small_text" class="form-text text-muted">Linguists will be notified via mobile for new jobs and accepting POs.</small>
             </div>
 
             <div class="form-group col">
                 <label for="home_number">Home Phone Number</label>
-                <textarea class="form-control {{ $errors->has('home_number') ? ' is-invalid' : '' }}" id="home_number" name="home_number" rows="1">@if(old('home_number')){{ old('home_number') }}@else{{ $user->personalDetails->home_number }}@endif</textarea>
+                <textarea class="form-control {{ $errors->has('home_number') ? ' is-invalid' : '' }}" id="home_number" name="home_number" rows="1" @if($user->personalDetails->home_number) disabled @endif >@if(old('home_number')){{ old('home_number') }}@else{{ $user->personalDetails->home_number }}@endif</textarea>
             </div>
         </div>
 
@@ -174,32 +174,32 @@
         <!-- BANK DETAILS -->
         <div class="row">
             <div class="form-group col">
-                <label for="account_name">Account Name</label>
-                <textarea class="form-control {{ $errors->has('account_name') ? ' is-invalid' : '' }}" id="account_name" name="account_name" rows="1">@if(old('account_name')){{ old('account_name') }}@else{{ $user->personalDetails->account_name }}@endif</textarea>
+                <label for="account_name" class="required">Account Name <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('account_name') ? ' is-invalid' : '' }}" id="account_name" name="account_name" rows="1" required @if($user->personalDetails->account_name) disabled @endif >@if(old('account_name')){{ old('account_name') }}@else{{ $user->personalDetails->account_name }}@endif</textarea>
             </div>
 
             <div class="form-group col">
-                <label for="account_number">Account Number</label>
-                <textarea class="form-control {{ $errors->has('account_number') ? ' is-invalid' : '' }}" id="account_number" name="account_number" rows="1">@if(old('account_number')){{ old('account_number') }}@else{{ $user->personalDetails->account_number }}@endif</textarea>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col">
-                <label for="bank_name">Bank Name</label>
-                <textarea class="form-control {{ $errors->has('bank_name') ? ' is-invalid' : '' }}" id="bank_name" name="bank_name" rows="1">@if(old('bank_name')){{ old('bank_name') }}@else{{ $user->personalDetails->bank_name }}@endif</textarea>
-            </div>
-
-            <div class="form-group col">
-                <label for="swift_code">Swift Code</label>
-                <textarea class="form-control {{ $errors->has('swift_code') ? ' is-invalid' : '' }}" id="swift_code" name="swift_code" rows="1">@if(old('swift_code')){{ old('swift_code') }}@else{{ $user->personalDetails->swift_code }}@endif</textarea>
+                <label for="account_number" class="required">Account Number <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('account_number') ? ' is-invalid' : '' }}" id="account_number" name="account_number" rows="1" required @if($user->personalDetails->account_number) disabled @endif >@if(old('account_number')){{ old('account_number') }}@else{{ $user->personalDetails->account_number }}@endif</textarea>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col">
-                <label for="bank_address">Bank Address</label>
-                <textarea class="form-control {{ $errors->has('bank_address') ? ' is-invalid' : '' }}" id="bank_address" name="bank_address" rows="3">@if(old('bank_address')){{ old('bank_address') }}@else{{ $user->personalDetails->bank_address }}@endif</textarea>
+                <label for="bank_name" class="required">Bank Name <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('bank_name') ? ' is-invalid' : '' }}" id="bank_name" name="bank_name" rows="1" required @if($user->personalDetails->bank_name) disabled @endif >@if(old('bank_name')){{ old('bank_name') }}@else{{ $user->personalDetails->bank_name }}@endif</textarea>
+            </div>
+
+            <div class="form-group col">
+                <label for="swift_code" class="required">Swift Code <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('swift_code') ? ' is-invalid' : '' }}" id="swift_code" name="swift_code" rows="1" required @if($user->personalDetails->swift_code) disabled @endif >@if(old('swift_code')){{ old('swift_code') }}@else{{ $user->personalDetails->swift_code }}@endif</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label for="bank_address" class="required">Bank Address <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('bank_address') ? ' is-invalid' : '' }}" id="bank_address" name="bank_address" rows="3" required @if($user->personalDetails->bank_address) disabled @endif >@if(old('bank_address')){{ old('bank_address') }}@else{{ $user->personalDetails->bank_address }}@endif</textarea>
             </div>
         </div>
 
