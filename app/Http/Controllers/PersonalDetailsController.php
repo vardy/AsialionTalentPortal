@@ -108,11 +108,11 @@ class PersonalDetailsController extends Controller
             'transcription_rate' => ['max:1000'],
             'hourly_rate' => ['max:1000'],
 
-            'account_name' => ['max:1000'],
-            'account_number' => ['max:1000'],
-            'bank_name' => ['max:1000'],
-            'bank_address' => ['max:1000'],
-            'swift_code' => ['max:1000'],
+            'account_name' => ['required', 'max:1000'],
+            'account_number' => ['required', 'max:1000'],
+            'bank_name' => ['required', 'max:1000'],
+            'bank_address' => ['required', 'max:1000'],
+            'swift_code' => ['required', 'max:1000'],
 
             'profile_picture' => ['max:500000', 'mimes:jpg,jpeg,png'] // Max: 0.5GB (500MB)
         ]);
