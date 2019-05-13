@@ -91,8 +91,8 @@
             </div>
 
             <div class="form-group col">
-                <label for="professional_experience" class="required">Professional Experience <span>*</span></label>
-                <textarea class="form-control {{ $errors->has('professional_experience') ? ' is-invalid' : '' }}" id="professional_experience" name="professional_experience" rows="3" required>@if(old('professional_experience')){{ old('professional_experience') }}@else{{ $user->personalDetails->professional_experience }}@endif</textarea>
+                <label for="work_experience" class="required">Work Experience <span>*</span></label>
+                <textarea class="form-control {{ $errors->has('work_experience') ? ' is-invalid' : '' }}" id="work_experience" name="work_experience" rows="3" required>@if(old('work_experience')){{ old('work_experience') }}@else{{ $user->personalDetails->work_experience }}@endif</textarea>
             </div>
         </div>
 
