@@ -4,6 +4,7 @@
 
 @section('imports')
     <link href="{{ mix('css/invoices.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 @stop
 
 @section('content')
@@ -92,10 +93,9 @@
                     </td>
                 </tr>
             </table>
-
-            <label for="btn_add_purchase_order">Purchase orders</label>
-            <button id="btn_add_purchase_order" class="btn btn-outline-info form-control">Add purchase order</button>
         </div>
+
+        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">Add purchase order <i class="fas fa-plus"></i></button>
 
         <div class="row">
             <!-- Invoice number section -->

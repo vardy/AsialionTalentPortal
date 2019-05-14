@@ -33,10 +33,6 @@ th, td {
   margin-bottom: 2em;
 }
 
-#new_invoice_header {
-  margin-top: 50px;
-}
-
 #form_create {
   margin-bottom: 5em;
 }
@@ -45,7 +41,9 @@ th, td {
   height: 30px;
   padding-top: 3px;
   padding-bottom: 6px;
-  margin-bottom: 1em;
+  margin-bottom: 1.4em;
+  width: 202px;
+  vertical-align: middle;
 }
 
 .row {
@@ -54,4 +52,8 @@ th, td {
 
 #upload-prologue {
   margin-bottom: 33px;
+}
+
+.fa-plus {
+  margin-left: 10px;
 }
