@@ -208,7 +208,7 @@
         </div>
 
         <div class="row">
-            <h2>Submit</h2>
+            <h2>CV and Résumé</h2>
         </div>
 
         <!-- CV/PROFILE PICTURE UPLOAD -->
