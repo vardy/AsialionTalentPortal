@@ -7,12 +7,7 @@
 @stop
 
 @section('content')
-    <h1>Invoices</h1>
-
-    <p id="invoice_flavour">
-        Welcome to ASIAL10N's secure file server. This is where you submit your payment requests and
-        upload your invoices to be processed.
-    </p>
+    <h1 id="new_invoice_header">New Invoice</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -30,15 +25,77 @@
         </div>
     @endif
 
-    <h1 id="new_invoice_header">New Invoice</h1>
+    <p id="invoice_flavour">
+        Welcome to ASIAL10N's secure file server. This is where you submit your payment requests and
+        upload your invoices to be processed. Please accumulate all jobs into one invoice at the end of each month for submission. DO NOT submit your invoice
+        prior to completion of your assignment.
+    </p>
 
-    <p id="upload-prologue">Please accumulate all jobs into one invoice at the end of each month for submission. DO NOT submit your invoice
-        prior to completion of your assignment.<br><br>Payment depends on your delivery of high-quality work by the agreed
-        deadline. Evaluation and incorporation of 1st-round revisions is the translator's responsibility and part of the
-        original fee.</p>
+    <p id="upload-prologue">Payment depends on your delivery of high-quality work by the agreed
+        deadline.</p>
 
     <form id="form_create" method="POST" action="{{ route('invoices') }}" enctype=multipart/form-data>
         {{ csrf_field() }}
+
+        <!-- Purchase order section -->
+        <div class="form-group">
+            <table id="dynamic_field">
+                <tr class="dynamic-row" id="dynamic-row-1">
+                    <td>
+                        <label for="po1_number">Purchase order number</label>
+                        <textarea class="form-control po_field" id="po1_number" name="po_number[]" rows="1" required></textarea>
+                    </td>
+                    <td>
+                        <label for="po1_description">Description</label>
+                        <textarea class="form-control po_field" id="po1_description" name="po_description[]" rows="1" required></textarea>
+                    </td>
+                    <td>
+                        <label for="po1_value">Value</label>
+                        <input type="number" class="form-control po_field" id="po1_value" name="po_value[]" step="0.01" value="0.00" placeholder="0.00" required/>
+                    </td>
+                    <td class="col_btn_delete">
+                        <button class="btn btn-outline-danger btn_remove" id="1">Remove</button>
+                    </td>
+                </tr>
+                <tr class="dynamic-row" id="dynamic-row-2">
+                    <td>
+                        <label for="po2_number">Purchase order number</label>
+                        <textarea class="form-control po_field" id="po2_number" name="po_number[]" rows="1" required></textarea>
+                    </td>
+                    <td>
+                        <label for="po2_description">Description</label>
+                        <textarea class="form-control po_field" id="po2_description" name="po_description[]" rows="1" required></textarea>
+                    </td>
+                    <td>
+                        <label for="po2_value">Value</label>
+                        <input type="number" class="form-control po_field" id="po2_value" name="po_value[]" step="0.01" value="0.00" placeholder="0.00" required/>
+                    </td>
+                    <td class="col_btn_delete">
+                        <button class="btn btn-outline-danger btn_remove" id="2">Remove</button>
+                    </td>
+                </tr>
+                <tr class="dynamic-row" id="dynamic-row-3">
+                    <td>
+                        <label for="po3_number">Purchase order number</label>
+                        <textarea class="form-control po_field" id="po3_number" name="po_number[]" rows="1" required></textarea>
+                    </td>
+                    <td>
+                        <label for="po3_description">Description</label>
+                        <textarea class="form-control po_field" id="po3_description" name="po_description[]" rows="1" required></textarea>
+                    </td>
+                    <td>
+                        <label for="po3_value">Value</label>
+                        <input type="number" class="form-control po_field" id="po3_value" name="po_value[]" step="0.01" value="0.00" placeholder="0.00" required/>
+                    </td>
+                    <td class="col_btn_delete">
+                        <button class="btn btn-outline-danger btn_remove" id="3">Remove</button>
+                    </td>
+                </tr>
+            </table>
+
+            <label for="btn_add_purchase_order">Purchase orders</label>
+            <button id="btn_add_purchase_order" class="btn btn-outline-info form-control">Add purchase order</button>
+        </div>
 
         <div class="row">
             <!-- Invoice number section -->
@@ -54,15 +111,6 @@
                 <input type="file" name="file" class="form-control-file">
                 <small id="labelHelp" class="form-text text-muted">You may attach one file at a time.</small>
             </div>
-        </div>
-
-        <!-- Purchase order section -->
-        <div class="form-group">
-            <label for="btn_add_purchase_order">Purchase orders</label>
-            <button id="btn_add_purchase_order" class="btn btn-outline-info form-control">Add purchase order</button>
-
-            <table id="dynamic_field">
-            </table>
         </div>
 
         <!-- NDA Waiver secction -->
@@ -81,7 +129,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            var i = 0;
+            var i = 3;
 
             $('#btn_add_purchase_order').click(function(event) {
                 event.preventDefault();
@@ -101,7 +149,7 @@
                     "                        <input type=\"number\" class=\"form-control po_field\" id=\"po" + i + "_value\" name=\"po_value[]\" step=\"0.01\" value=\"0.00\" placeholder=\"0.00\" required/>\n" +
                     "                    </td>\n" +
                     "                    <td class=\"col_btn_delete\">\n" +
-                    "                        <button class=\"btn btn-outline-danger btn_remove\" id=" + i + ">Delete</button>\n" +
+                    "                        <button class=\"btn btn-outline-danger btn_remove\" id=" + i + ">Remove</button>\n" +
                     "                    </td>\n" +
                     "                </tr>");
             });
