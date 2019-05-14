@@ -1,14 +1,14 @@
 .cookie-consent {
   position: fixed;
   bottom: 0;
-  left: 0;
   height: 38px;
   line-height: 38px; /* Line-height same as height to vertically center text */
-  width: 100vw;
   background-color: black;
   text-align: center;
   align-items: center;
   vertical-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .cookie-consent__agree {

@@ -36,13 +36,22 @@ Route::get('/careers', function() {
 })->name('careers');
 
 // NDA PDF viewer page
-Route::get('/nda', function () {
+Route::get('/nda', function() {
     if (auth()->user()) {
         return view('nda');
     } else {
         return redirect(route('login'));
     }
 })->name('nda');
+
+// Privacy policy page
+Route::get('/privacy_policy', function() {
+    if (auth()->user()) {
+        return view('privacy_policy');
+    } else {
+        return redirect(route('login'));
+    }
+})->name('privacy_policy');
 
 // Admin panel
 // List users - ADMIN ONLY
