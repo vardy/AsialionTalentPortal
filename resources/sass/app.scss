@@ -80,9 +80,10 @@ h1 {
 
 #side-nav li:hover {
   background-color: #393939;
-  color: $font-color-darker;
+  color: red;
   text-decoration: none;
   cursor: pointer;
+  transition: 0.1s ease-in;
 }
 
 #side-nav li span {
