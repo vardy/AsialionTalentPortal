@@ -49,6 +49,7 @@
                         <a href="{{ route('nda') }}"><li><span>NDA</span></li></a>
                         <a href="{{ route('personal_details') }}"><li><span>Personal Details</span></li></a>
                         <a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}"><li><span>Careers</span></li></a>
+                        <a href="{{ route('privacy_policy') }}"><li><span>Privacy Policy</span></li></a>
                         @auth
                             @if (auth()->user()->hasRole('admin'))
                                 <a href="{{ route('admin') }}"><li><span class="admin-link">Admin Panel</span></li></a>
