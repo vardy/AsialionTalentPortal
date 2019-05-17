@@ -46,6 +46,10 @@
 
                 <img src="/storage/files/AL_LOGO.png" alt="AsiaLion Logo">
 
+                <div id="talent-portal-text-header-container">
+                    <p id="talent-portal-text-header">Talent Portal</p>
+                </div>
+
                 <div id="side-nav-body">
                     <ul>
                         <a href="{{ route('invoices') }}"><li><span>Invoices</span></li></a>
