@@ -103,6 +103,7 @@ h1 {
 }
 
 #logout-section {
+  width: 80%;
   position: absolute;
   left: 20px;
   bottom: 15px;
@@ -126,6 +127,43 @@ h1 {
   width: 80vw;
   margin-left: 160px;
   padding-top: 7vh;
+}
+
+.social-media-section {
+  width: 100%;
+  margin-left: 15px;
+}
+
+.social-media-icon {
+  margin-right: 15px;
+  font-size: 2em;
+}
+
+.social-media-icon:hover {
+  color: red;
+}
+
+.icon-last {
+  margin-right: 0;
+}
+
+.privacy-section {
+  margin-bottom: 5px;
+  font-size: 0.95em;
+  margin-left: 15px;
+}
+
+.privacy-item:hover {
+  color: red;
+}
+
+.horizontal-rule {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #333, #ccc, #333);
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 // Table customisations

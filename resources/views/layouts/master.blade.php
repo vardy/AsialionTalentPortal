@@ -25,6 +25,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-LS4/wo5Z/8SLpOLHs0IbuPAGOWTx30XSoZJ8o7WKH0UJhRpjXXTpODOjfVnNjeHu" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
     <!-- Local CSS -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/cookie_consent.css') }}" rel="stylesheet">
@@ -49,7 +52,6 @@
                         <a href="{{ route('nda') }}"><li><span>NDA</span></li></a>
                         <a href="{{ route('personal_details') }}"><li><span>Personal Details</span></li></a>
                         <a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}"><li><span>Careers</span></li></a>
-                        <a href="{{ route('privacy_policy') }}"><li><span>Privacy Policy</span></li></a>
                         @auth
                             @if (auth()->user()->hasRole('admin'))
                                 <a href="{{ route('admin') }}"><li><span class="admin-link">Admin Panel</span></li></a>
@@ -60,6 +62,17 @@
 
                 @auth
                     <div id="logout-section">
+                        <div class="social-media-section">
+                            <span class="social-media-icon"><a href="https://www.facebook.com/asial10n"><i class="fab fa-facebook-square"></i></a></span>
+                            <span class="social-media-icon icon-last"><a href="https://www.linkedin.com/company/asial10n"><i class="fab fa-linkedin"></i></a></span>
+                        </div>
+
+                        <div class="privacy-section">
+                            <a href="{{ route('privacy_policy') }}"><span class="privacy-item">Privacy Policy</span></a>
+                        </div>
+
+                        <div class="horizontal-rule"></div>
+
                         <img src="{{ auth()->user()->getProfilePicturePath(auth()->user()) }}" alt="Your profile picture.">
 
                         <ul>
