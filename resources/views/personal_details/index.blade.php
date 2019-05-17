@@ -31,6 +31,19 @@
         {{ csrf_field() }}
         {{ method_field('PUT') }}
 
+        <input type="text" class="hidden-field" name="first_name" value="{{ $user->personalDetails->first_name }}">
+        <input type="text" class="hidden-field" name="last_name" value="{{ $user->personalDetails->last_name }}">
+        <input type="text" class="hidden-field" name="email" value="{{ $user->personalDetails->email }}">
+
+        <input type="text" class="hidden-field" name="mobile_number" value="{{ $user->personalDetails->mobile_number }}">
+        <input type="text" class="hidden-field" name="home_number" value="{{ $user->personalDetails->home_number }}">
+
+        <input type="text" class="hidden-field" name="account_name" value="{{ $user->personalDetails->account_name }}">
+        <input type="text" class="hidden-field" name="account_number" value="{{ $user->personalDetails->account_number }}">
+        <input type="text" class="hidden-field" name="bank_name" value="{{ $user->personalDetails->bank_name }}">
+        <input type="text" class="hidden-field" name="swift_code" value="{{ $user->personalDetails->swift_code }}">
+        <input type="text" class="hidden-field" name="bank_address" value="{{ $user->personalDetails->bank_address }}">
+
         <!-- Basic user details -->
         <div class="row">
             <div class="form-group col">
