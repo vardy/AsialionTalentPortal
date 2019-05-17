@@ -2,6 +2,8 @@
 
 @section('title', 'Invoices')
 
+@section('currently_selected_invoices', 'currently-selected')
+
 @section('imports')
     <link href="{{ mix('css/invoices.css') }}" rel="stylesheet">
 @stop

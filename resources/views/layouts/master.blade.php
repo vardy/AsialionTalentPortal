@@ -52,9 +52,9 @@
 
                 <div id="side-nav-body">
                     <ul>
-                        <a href="{{ route('invoices') }}"><li><span>Invoices</span></li></a>
-                        <a href="{{ route('nda') }}"><li><span>NDA</span></li></a>
-                        <a href="{{ route('personal_details') }}"><li><span>Personal Details</span></li></a>
+                        <a href="{{ route('invoices') }}"><li class="@yield('currently_selected_invoices')"><span>Invoices</span></li></a>
+                        <a href="{{ route('nda') }}"><li class="@yield('currently_selected_nda')"><span>NDA</span></li></a>
+                        <a href="{{ route('personal_details') }}"><li class="@yield('currently_selected_personal_details')"><span>Personal Details</span></li></a>
                         <a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}"><li><span>Careers</span></li></a>
                         @auth
                             @if (auth()->user()->hasRole('admin'))

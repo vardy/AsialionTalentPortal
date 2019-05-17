@@ -2,6 +2,8 @@
 
 @section('title', 'NDA')
 
+@section('currently_selected_nda', 'currently-selected')
+
 @section('imports')
     <link href="{{ mix('css/nda.css') }}" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.js"></script>

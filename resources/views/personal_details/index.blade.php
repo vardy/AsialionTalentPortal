@@ -2,6 +2,8 @@
 
 @section('title', 'Personal Details')
 
+@section('currently_selected_personal_details', 'currently-selected')
+
 @section('imports')
     <link href="{{ mix('css/personal_details.css') }}" rel="stylesheet">
 @stop

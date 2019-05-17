@@ -87,7 +87,7 @@ h1 {
   color: $font-color;
 }
 
-#side-nav li:hover {
+#side-nav li:hover, .currently-selected {
   background-color: #393939;
   color: red;
   text-decoration: none;
