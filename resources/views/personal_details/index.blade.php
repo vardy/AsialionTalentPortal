@@ -69,6 +69,18 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="form-group col">
+                <label for="qq">QQ</label>
+                <textarea class="form-control {{ $errors->has('qq') ? ' is-invalid' : '' }}" id="qq" name="qq" rows="1">@if(old('qq')){{ old('qq') }}@else{{ $user->personalDetails->qq }}@endif</textarea>
+            </div>
+
+            <div class="form-group col">
+                <label for="linkedin">LinkedIn Profile</label>
+                <textarea class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}" id="linkedin" name="linkedin" rows="1">@if(old('linkedin')){{ old('linkedin') }}@else{{ $user->personalDetails->linkedin }}@endif</textarea>
+            </div>
+        </div>
+
         <!-- Country of residence -->
         <div class="row">
             <div class="form-group col">

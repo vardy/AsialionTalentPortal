@@ -27,6 +27,8 @@ class CreatePersonalDetailsTable extends Migration
             $table->mediumText('last_name')->nullable(); // Required
             $table->mediumText('email')->nullable(); // Required
             $table->mediumText('skype_id')->nullable();
+            $table->mediumText('qq')->nullable();
+            $table->mediumText('linkedin')->nullable();
 
             $table->mediumText('country_of_residence')->nullable(); // Required
             $table->mediumText('mobile_number')->nullable(); // Required
@@ -39,18 +41,18 @@ class CreatePersonalDetailsTable extends Migration
             $table->mediumText('tools')->nullable();
             $table->mediumText('turnaround_per_day')->nullable();
 
-            $table->mediumText('currency_used')->nullable();
+            $table->mediumText('currency_used')->nullable(); // Required
 
             $table->mediumText('translation_rate')->nullable();
             $table->mediumText('editing_rate')->nullable();
             $table->mediumText('transcription_rate')->nullable();
             $table->mediumText('hourly_rate')->nullable();
 
-            $table->mediumText('account_name')->nullable();
-            $table->mediumText('account_number')->nullable();
-            $table->mediumText('bank_name')->nullable();
-            $table->mediumText('bank_address')->nullable();
-            $table->mediumText('swift_code')->nullable();
+            $table->mediumText('account_name')->nullable(); // Required
+            $table->mediumText('account_number')->nullable(); // Required
+            $table->mediumText('bank_name')->nullable(); // Required
+            $table->mediumText('bank_address')->nullable(); // Required
+            $table->mediumText('swift_code')->nullable(); // Required
         });
     }
 

@@ -89,6 +89,8 @@ class PersonalDetailsController extends Controller
             'last_name' => ['required', 'max:1000'],
             'email' => ['required', 'email', 'max:1000'],
             'skype_id' => ['max:1000'],
+            'qq' => ['max:1000'],
+            'linkedin' => ['max:1000'],
 
             'country_of_residence' => ['required'],
             'mobile_number' => ['required', 'max:1000'],
@@ -136,6 +138,8 @@ class PersonalDetailsController extends Controller
         $userDetails->last_name = $request->last_name;
         $userDetails->email = $request->email;
         $userDetails->skype_id = $request->skype_id;
+        $userDetails->qq = $request->qq;
+        $userDetails->linkedin = $request->linkedin;
 
         $userDetails->country_of_residence = $request->country_of_residence;
         $userDetails->mobile_number = $request->mobile_number;

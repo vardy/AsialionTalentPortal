@@ -26,7 +26,7 @@ class PersonalDetails extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'skype_id',
+        'first_name', 'last_name', 'email', 'skype_id', 'qq', 'linkedin',
         'country_of_residence', 'mobile_number', 'home_number',
         'highest_education', 'work_experience', 'industry_specialization',
         'language_pairs', 'tools', 'turnaround_per_day', 'currency_used',
