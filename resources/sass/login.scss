@@ -7,9 +7,14 @@
 
 body, html {
   font-family: $body-font;
-  background-color: $background-color;
   color: $font-color;
   padding: 0;
+
+  background: url("/images/login-background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .custom-container {
@@ -38,32 +43,41 @@ body, html {
   align-items: center;
 }
 
+#top-bar {
+  height: 155px;
+  width: 100vw;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .brand-image-container {
-  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-  display: -ms-flexbox;  /* TWEENER - IE 10 */
-  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
 
   justify-content: center;
   align-items: center;
 }
 
 .brand-image-container img {
-  width: 45vw;
+  width: 430px;
 }
 
 .login-area {
-  width: 75%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
 
-  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-  display: -ms-flexbox;  /* TWEENER - IE 10 */
-  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  background-color: rgba(37, 37, 37, 0.85);
 
   justify-content: center;
   align-items: center;
 
-  margin-top: 20px;
+  padding: 50px 100px;
 }
 
 .form-group {
@@ -80,7 +94,7 @@ body, html {
   font-size: 1em;
   padding: 0.5em;
   border-radius: 5px;
-  width: 30vw;
+  width: 400px;
 }
 
 .form-group button {

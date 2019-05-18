@@ -16,8 +16,8 @@
         <!-- Bootstrap -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-        <!-- Particles.JS -->
-        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <!-- Particles.JS
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
 
         <!-- Local CSS -->
         <link href="{{ mix('css/login.css') }}" rel="stylesheet">
@@ -30,9 +30,9 @@
         @csrf
     </form>
 
-    <div class="custom-container">
+    <div id="top-bar"></div>
 
-        <div id="particles-js"></div>
+    <div class="custom-container">
 
         <div class="vertical-centered-containers">
 
@@ -84,7 +84,7 @@
     <script src="{{ mix('/js/manifest.js') }}"></script>
     <script src="{{ mix('/js/vendor.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
-    <script src="{{ mix('/js/particlesjs.js') }}"></script>
+    <!-- <script src="{{ mix('/js/particlesjs.js') }}"></script> -->
 
     @include('cookieConsent::index')
 
