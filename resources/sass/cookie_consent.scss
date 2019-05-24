@@ -19,3 +19,13 @@
   margin-left: 15px;
   font-size: 0.8em;
 }
+
+@media (max-width: 1009px) {
+    .cookie-consent {
+        height: 400px;
+    }
+
+    .cookie-consent__agree {
+        height: 10%;
+    }
+}
