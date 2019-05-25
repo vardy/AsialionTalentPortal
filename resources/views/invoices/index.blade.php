@@ -96,7 +96,7 @@
             </table>
         </div>
 
-        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">Add purchase order <i class="fas fa-plus"></i></button>
+        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">Add Another Purchase Order <i class="fas fa-plus"></i></button>
 
         <div class="row">
             <!-- Invoice number section -->
