@@ -20,6 +20,10 @@ h2 {
 }
 
 #required_flavour_text {
+  margin-bottom: 10px;
+}
+
+#locked_fields_text {
   margin-bottom: 30px;
 }
 
@@ -48,4 +52,8 @@ h2 {
 
 .hidden-field {
   display: none;
+}
+
+.form-control:disabled {
+  background-color: #c7c2c2;
 }
