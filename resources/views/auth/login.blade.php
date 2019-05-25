@@ -43,6 +43,10 @@
             </div>
 
             <div id="login-form" class="login-area">
+                <div class="text-center">
+                    <p class="small-heading">Talent Portal</p>
+                </div>
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -92,4 +96,3 @@
 
     </body>
 </html>
-

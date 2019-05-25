@@ -133,3 +133,14 @@ label {
   left: 0;
   z-index: -999;
 }
+
+.text-center {
+  width: 100%;
+  text-align: center;
+}
+
+.small-heading {
+  font-size: 2em;
+  font-family: $heading-font;
+}
+
