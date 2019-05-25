@@ -175,6 +175,17 @@ h1 {
   margin-bottom: 20px;
 }
 
+.subtle-anchor {
+  color: $font-color;
+  text-decoration-line: underline;
+  text-underline: white;
+}
+
+.subtle-anchor:hover {
+  color: white;
+  cursor: pointer;
+}
+
 // Table customisations
 .page-item.active .page-link {
   background-color: darkgray;

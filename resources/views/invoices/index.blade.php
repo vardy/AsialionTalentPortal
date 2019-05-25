@@ -117,7 +117,7 @@
         <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="ndaCheck" name="ndaCheck" required>
-                <label class="form-check-label" for="ndaCheck">I have read and accept the terms of the <a href="{{ route('nda') }}">NDA agreement</a>.</label>
+                <label class="form-check-label" for="ndaCheck">I have read and accept the terms of the <a class="subtle-anchor" href="{{ route('nda') }}">NDA agreement</a>.</label>
             </div>
         </div>
 
