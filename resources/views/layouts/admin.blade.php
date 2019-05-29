@@ -43,10 +43,13 @@
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item @yield('active-home')">
-                        <a class="nav-link" href="{{ route('admin') }}">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('admin') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/invoices">Main website</a>
                     </li>
                     <li class="nav-item @yield('active-s3')">
-                        <a class="nav-link" href="/admin/s3">File Management<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/admin/s3">File Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
