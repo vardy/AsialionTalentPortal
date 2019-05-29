@@ -37,10 +37,16 @@
         <div class="vertical-centered-containers">
 
             <div class="brand-image-container">
-                <img src="/storage/files/AL_LOGO_WHITE_SCALEUP.png" alt="AsiaLion Logo" class="brand-image">
+                <div class="frame">
+                    <img src="/storage/files/AL_LOGO_WHITE_SCALEUP.png" alt="AsiaLion Logo" class="brand-image">
+                </div>
             </div>
 
             <div id="login-form" class="login-area">
+                <div class="text-center">
+                    <p class="small-heading">Talent Portal</p>
+                </div>
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -90,4 +96,3 @@
 
     </body>
 </html>
-

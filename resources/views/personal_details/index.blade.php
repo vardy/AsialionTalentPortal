@@ -13,6 +13,10 @@
 
     <p id="required_flavour_text" class="required"><span>*</span> Required</p>
 
+    @if($user->hasCV)
+        <p id="locked_fields_text">If you would like to make changes to locked fields, please inform us at <a class="subtle-anchor" href="mailto:payment@asialion.com">payment@asialion.com</a></p>
+    @endif
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

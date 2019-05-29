@@ -96,7 +96,7 @@
             </table>
         </div>
 
-        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">Add purchase order <i class="fas fa-plus"></i></button>
+        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">Add Another Purchase Order <i class="fas fa-plus"></i></button>
 
         <div class="row">
             <!-- Invoice number section -->
@@ -117,7 +117,7 @@
         <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="ndaCheck" name="ndaCheck" required>
-                <label class="form-check-label" for="ndaCheck">I have read and accept the terms of the <a href="{{ route('nda') }}">NDA agreement</a>.</label>
+                <label class="form-check-label" for="ndaCheck">I have read and accept the terms of the <a class="subtle-anchor" href="{{ route('nda') }}">NDA agreement</a>.</label>
             </div>
         </div>
 

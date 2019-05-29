@@ -44,7 +44,8 @@ body, html {
 }
 
 #top-bar {
-  height: 155px;
+  //height: 155px;
+  height: 245px; // New requested height
   width: 100vw;
   background-color: black;
   position: fixed;
@@ -60,10 +61,27 @@ body, html {
 
   justify-content: center;
   align-items: center;
+  height: 245px; // New requested height
+}
+
+.frame {
+  position: relative;
+  height: 225px;
+  width: 440px;
 }
 
 .brand-image-container img {
   width: 430px;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .login-area {
@@ -115,3 +133,14 @@ label {
   left: 0;
   z-index: -999;
 }
+
+.text-center {
+  width: 100%;
+  text-align: center;
+}
+
+.small-heading {
+  font-size: 2em;
+  font-family: $heading-font;
+}
+

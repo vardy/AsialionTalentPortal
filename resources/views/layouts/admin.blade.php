@@ -26,6 +26,10 @@
     <link href="{{ mix('/css/admin.css') }}" rel="stylesheet">
 </head>
 <body>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('admin') }}">Admin Panel</a>
@@ -43,6 +47,14 @@
                     </li>
                     <li class="nav-item @yield('active-s3')">
                         <a class="nav-link" href="/admin/s3">File Management<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+
+                               <span>Logout</span>
+                        </a>
                     </li>
                 </ul>
             </div>
