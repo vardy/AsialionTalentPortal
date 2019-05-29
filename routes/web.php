@@ -10,6 +10,9 @@ Route::get('/', function () {
 
 // User controller
 Route::delete('/user/{user_id}', 'UserController@destroy');
+Route::patch('/admin/user/{user_id}/roles/{role_name}', 'UserController@add_role');
+Route::delete('/admin/user/{user_id}/roles/{role_name}', 'UserController@remove_role');
+Route::patch('/admin/user/{user_id}/password', 'UserController@update_password');
 
 // Invoice controllers
 Route::get('/invoices', 'InvoiceController@index')->name('invoices');
@@ -59,8 +62,6 @@ Route::get('/admin', 'AdminController@index')->name('admin'); // All users, add 
 Route::get('/admin/register', 'AdminController@show_registration_form');
 Route::post('/admin/register', 'AdminController@create_user');
 Route::get('/admin/user/{user_id}', 'AdminController@show_user'); // User invoices, user personal details, lock details, remove PFP
-Route::post('/admin/user/{user_id}/roles', 'AdminController@add_role');
-Route::delete('/admin/user/{user_id}/roles', 'AdminController@delete_role');
 Route::get('/admin/invoice/{invoice_id}', 'AdminController@show_invoice'); // Show individual invoice
 Route::put('/admin/update_nda', 'AdminController@update_nda')->name('update_nda'); // Change file in /storage/files/NDA.pdf
 // S3 file controls

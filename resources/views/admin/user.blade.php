@@ -15,6 +15,22 @@
         </ol>
     </div>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session()->has('success-message'))
+        <div class="alert alert-success">
+            <p>{{ session('success-message') }}</p>
+        </div>
+    @endif
+
     <div class="panel-section">
         <h1>Talent's Account Details</h1>
 
@@ -131,7 +147,34 @@
         </table>
     </div>
 
-    @if(!\App\User::findOrFail($user->id)->hasRole('admin'))
+    <div class="panel-section">
+        <h1>Update user's password</h1>
+
+        <form id="form-update-password" method="POST" action="/admin/user/{{ $user->id }}/password"> <!-- Patch user's password. Validate password is confirmed. Use two text inputs. -->
+            {{ method_field('PATCH') }}
+            {{ csrf_field() }}
+
+            <div class="form-group">
+                <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+
+                <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-outline-success" onclick="parentNode.parentNode.submit()"><a>Update</a></button>
+            </div>
+        </form>
+    </div>
+
+    @if($user->hasRole('admin'))
         <div class="panel-section">
             <h1>Delete User Account</h1>
 
@@ -144,32 +187,24 @@
         </div>
     @endif
 
-    <form id="form-admin" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+    <form id="form-admin" method="POST" action="/admin/user/{{ $user->id }}/roles/admin" style="display: none">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
-
-        <input type="checkbox" name="admin_role" value="admin_role" checked>
     </form>
 
 
-    <form id="form-user" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+    <form id="form-user" method="POST" action="/admin/user/{{ $user->id }}/roles/user" style="display: none">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
-
-        <input type="checkbox" name="user_role" value="admin_role" checked>
     </form>
 
-    <form id="form-delete-admin" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+    <form id="form-delete-admin" method="POST" action="/admin/user/{{ $user->id }}/roles/admin" style="display: none">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
-
-        <input type="checkbox" name="admin_role" value="admin_role" checked>
     </form>
 
-    <form id="form-delete-user" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+    <form id="form-delete-user" method="POST" action="/admin/user/{{ $user->id }}/roles/user" style="display: none">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
-
-        <input type="checkbox" name="user_role" value="admin_role" checked>
     </form>
 @stop
