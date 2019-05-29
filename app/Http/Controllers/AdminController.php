@@ -103,9 +103,11 @@ class AdminController extends Controller {
         }
 
         $user = User::findOrFail($user_id);
+        $roles = $user->roles;
 
         return view('admin.user', [
-           'user' => $user
+            'user' => $user,
+            'roles' => $roles
         ]);
     }
 
@@ -159,5 +161,51 @@ class AdminController extends Controller {
         $profile_picture->save();
 
         return redirect(route('admin'));
+    }
+
+    public function add_role($user_id, Request $request) {
+
+        if(auth()->user()) {
+            if(!auth()->user()->hasRole('admin')) {
+                abort(403);
+            }
+        } else {
+            return redirect('/login');
+        }
+
+        $user = User::findOrFail($user_id);
+        if($request->admin_role) {
+            $user->roles()->attach(Role::where('name','admin')->first());
+        }
+        if($request->user_role) {
+            $user->roles()->attach(Role::where('name','user')->first());
+        }
+        $user->save();
+        return redirect()->back()->with([
+            'success-message' => 'Successfully updated user\'s roles.'
+        ]);
+    }
+
+    public function delete_role($user_id, Request $request) {
+
+        if(auth()->user()) {
+            if(!auth()->user()->hasRole('admin')) {
+                abort(403);
+            }
+        } else {
+            return redirect('/login');
+        }
+
+        $user = User::findOrFail($user_id);
+        if($request->admin_role) {
+            $user->roles()->detach(Role::where('name','admin')->first());
+        }
+        if($request->user_role) {
+            $user->roles()->detach(Role::where('name','user')->first());
+        }
+        $user->save();
+        return redirect()->back()->with([
+            'success-message' => 'Successfully updated user\'s roles.'
+        ]);
     }
 }

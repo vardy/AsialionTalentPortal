@@ -59,6 +59,8 @@ Route::get('/admin', 'AdminController@index')->name('admin'); // All users, add 
 Route::get('/admin/register', 'AdminController@show_registration_form');
 Route::post('/admin/register', 'AdminController@create_user');
 Route::get('/admin/user/{user_id}', 'AdminController@show_user'); // User invoices, user personal details, lock details, remove PFP
+Route::post('/admin/user/{user_id}/roles', 'AdminController@add_role');
+Route::delete('/admin/user/{user_id}/roles', 'AdminController@delete_role');
 Route::get('/admin/invoice/{invoice_id}', 'AdminController@show_invoice'); // Show individual invoice
 Route::put('/admin/update_nda', 'AdminController@update_nda')->name('update_nda'); // Change file in /storage/files/NDA.pdf
 // S3 file controls
@@ -69,3 +71,7 @@ Route::delete('/admin/s3/purge');
 
 // Misc intermediate controllers
 Route::get('/redirect/invoice_delete', 'RedirectController@invoice_delete');
+
+Route::get('/testing', function() {
+    dd(DB::table('roles')->select('name')->get()->toArray());
+});

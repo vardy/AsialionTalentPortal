@@ -49,6 +49,30 @@
     </div>
 
     <div class="panel-section">
+        <h1>User Account Permissions</h1>
+
+        <ul class="list-group">
+            @if($roles->isNotEmpty())
+                @foreach($roles as $role)
+                    <li class="list-group-item"><a>{{ $role->name }}</a><button class="btn btn-outline-danger btn-role-remove" onclick="document.getElementById('form-delete-' + '{{ $role->name }}').submit()"><a>Remove</a></button></li>
+                @endforeach
+            @else
+                <li class="list-group-item">This user has no roles</li>
+            @endif
+        </ul>
+
+        <h2>Add roles to user</h2>
+
+        <p>Click on a role to add it to the user</p>
+
+        <ul class="list-group-horizontal static-role-list">
+            @foreach (DB::table('roles')->select('name')->get()->toArray() as $role)
+                <li class="list-group-item static-role-list-item" onclick="document.getElementById('form-' + '{{ $role->name}}').submit()">{{ $role->name }}</li>
+            @endforeach
+        </ul>
+    </div>
+
+    <div class="panel-section">
         <h1>Talent's Invoices</h1>
 
         <table class="table dataTable">
@@ -119,4 +143,33 @@
             </form>
         </div>
     @endif
+
+    <form id="form-admin" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
+
+        <input type="checkbox" name="admin_role" value="admin_role" checked>
+    </form>
+
+
+    <form id="form-user" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
+
+        <input type="checkbox" name="user_role" value="admin_role" checked>
+    </form>
+
+    <form id="form-delete-admin" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+
+        <input type="checkbox" name="admin_role" value="admin_role" checked>
+    </form>
+
+    <form id="form-delete-user" method="POST" action="/admin/user/{{ $user->id }}/roles" style="display: none">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+
+        <input type="checkbox" name="user_role" value="admin_role" checked>
+    </form>
 @stop
