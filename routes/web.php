@@ -38,6 +38,12 @@ Route::get('/careers', function() {
     return Redirect::to($careers_url);
 })->name('careers');
 
+// Privacy policy page redirects users to AsiaLion's privacy policy
+Route::get('/privacy-policy', function() {
+    $policy_url = 'https://www.asialion.com/privacy-policy/';
+    return Redirect::to($policy_url);
+})->name('privacy_policy');
+
 // NDA PDF viewer page
 Route::get('/nda', function() {
     if (auth()->user()) {
@@ -46,15 +52,6 @@ Route::get('/nda', function() {
         return redirect(route('login'));
     }
 })->name('nda');
-
-// Privacy policy page
-Route::get('/privacy_policy', function() {
-    if (auth()->user()) {
-        return view('privacy_policy');
-    } else {
-        return redirect(route('login'));
-    }
-})->name('privacy_policy');
 
 // Admin panel
 // List users - ADMIN ONLY

@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="privacy-section">
-                            <a href="{{ route('privacy_policy') }}"><span class="privacy-item">Privacy Policy</span></a>
+                            <a target="_blank" rel="noopener noreferrer" href="{{ route('privacy_policy') }}"><span class="privacy-item">Privacy Policy</span></a>
                         </div>
 
                         <div class="horizontal-rule"></div>
