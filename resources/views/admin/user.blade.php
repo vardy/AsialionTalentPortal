@@ -174,7 +174,7 @@
         </form>
     </div>
 
-    @if($user->hasRole('admin'))
+    @if(auth()->user()->hasRole('admin'))
         <div class="panel-section">
             <h1>Delete User Account</h1>
 
