@@ -70,7 +70,14 @@
         <ul class="list-group">
             @if($roles->isNotEmpty())
                 @foreach($roles as $role)
-                    <li class="list-group-item"><a>{{ $role->name }}</a><button class="btn btn-outline-danger btn-role-remove" onclick="document.getElementById('form-delete-' + '{{ $role->name }}').submit()"><a>Remove</a></button></li>
+                    <li class="list-group-item">
+                        <a>{{ $role->name }}</a>
+                        @if(auth()->user()->id !== $user->id)
+                        <button class="btn btn-outline-danger btn-role-remove" onclick="document.getElementById('form-delete-' + '{{ $role->name }}').submit()"><a>Remove</a></button>
+                        @elseif($role->name !== 'admin')
+                            <button class="btn btn-outline-danger btn-role-remove" onclick="document.getElementById('form-delete-' + '{{ $role->name }}').submit()"><a>Remove</a></button>
+                        @endif
+                    </li>
                 @endforeach
             @else
                 <li class="list-group-item">This user has no roles</li>
@@ -174,24 +181,25 @@
         </form>
     </div>
 
-    @if(auth()->user()->hasRole('admin'))
-        <div class="panel-section">
-            <h1>Delete User Account</h1>
+    <div class="panel-section">
+        <h1>Delete User Account</h1>
 
+        @if(auth()->user()->id !== $user->id)
             <form id="form_delete" method="POST" action="/user/{{ $user->id }}" enctype=multipart/form-data>
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
 
                 <button id="btn_account_delete" class="btn btn-outline-danger" onclick="if(confirm('Are you sure you want to delete this user?')){parentNode.submit()}">Delete User</button>
             </form>
-        </div>
-    @endif
+        @else
+            <p>You may not delete the account you are currently logged into.</p>
+        @endif
+    </div>
 
     <form id="form-admin" method="POST" action="/admin/user/{{ $user->id }}/roles/admin" style="display: none">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
     </form>
-
 
     <form id="form-user" method="POST" action="/admin/user/{{ $user->id }}/roles/user" style="display: none">
         {{ csrf_field() }}
