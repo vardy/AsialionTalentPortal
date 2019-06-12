@@ -73,3 +73,13 @@ Route::get('/redirect/invoice_delete', 'RedirectController@invoice_delete');
 Route::get('/testing', function() {
     dd(DB::table('roles')->select('name')->get()->toArray());
 });
+
+// TEMPORARY
+
+Route::get('/locale/jp', function() {
+    App::setlocale('jp');
+});
+
+Route::get('/locale/en', function() {
+    App::setlocale('en');
+});

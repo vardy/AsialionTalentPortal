@@ -13,7 +13,7 @@
     <div id="pdf_viewer"></div>
 
     <div id="pdf_download_section">
-        <a href="/storage/files/NDA.pdf" download><button class="btn-dark" id="btn_download">Download</button></a>
+        <a href="/storage/files/NDA.pdf" download><button class="btn-dark" id="btn_download">{{ __('nda.download_button') }}</button></a>
     </div>
 
     <script>

@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-    <h1 id="new_invoice_header">New Invoice</h1>
+    <h1 id="new_invoice_header">{{ __('invoicing.new_invoice_heading') }}</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -27,14 +27,9 @@
         </div>
     @endif
 
-    <p id="invoice_flavour">
-        Welcome to ASIAL10N's secure file server. This is where you submit your payment requests and
-        upload your invoices to be processed. Please accumulate all jobs into one invoice at the end of each month for submission. DO NOT submit your invoice
-        prior to completion of your assignment.
-    </p>
+    <p id="invoice_flavour">{{ __('invoicing.welcome_text') }}</p>
 
-    <p id="upload-prologue">Payment depends on your delivery of high-quality work by the agreed
-        deadline.</p>
+    <p id="upload-prologue">{{ __('invoicing.welcome_text_two') }}</p>
 
     <form id="form_create" method="POST" action="{{ route('invoices') }}" enctype=multipart/form-data>
         {{ csrf_field() }}
@@ -44,71 +39,71 @@
             <table id="dynamic_field">
                 <tr class="dynamic-row" id="dynamic-row-1">
                     <td>
-                        <label for="po1_number">Purchase order number</label>
+                        <label for="po1_number">{{ __('invoicing.purchase_order_number_label') }}</label>
                         <textarea class="form-control po_field" id="po1_number" name="po_number[]" rows="1" required></textarea>
                     </td>
                     <td>
-                        <label for="po1_description">Description</label>
+                        <label for="po1_description">{{ __('invoicing.purchase_order_description_label') }}</label>
                         <textarea class="form-control po_field" id="po1_description" name="po_description[]" rows="1" required></textarea>
                     </td>
                     <td>
-                        <label for="po1_value">Value</label>
+                        <label for="po1_value">{{ __('invoicing.purchase_order_value_label') }}</label>
                         <input type="number" class="form-control po_field" id="po1_value" name="po_value[]" step="0.01" value="0.00" placeholder="0.00" required/>
                     </td>
                     <td class="col_btn_delete">
-                        <button class="btn btn-outline-danger btn_remove" id="1">Remove</button>
+                        <button class="btn btn-outline-danger btn_remove" id="1">{{ __('invoicing.remove_button') }}</button>
                     </td>
                 </tr>
                 <tr class="dynamic-row" id="dynamic-row-2">
                     <td>
-                        <label for="po2_number">Purchase order number</label>
+                        <label for="po2_number">{{ __('invoicing.purchase_order_number_label') }}</label>
                         <textarea class="form-control po_field" id="po2_number" name="po_number[]" rows="1" required></textarea>
                     </td>
                     <td>
-                        <label for="po2_description">Description</label>
+                        <label for="po2_description">{{ __('invoicing.purchase_order_description_label') }}</label>
                         <textarea class="form-control po_field" id="po2_description" name="po_description[]" rows="1" required></textarea>
                     </td>
                     <td>
-                        <label for="po2_value">Value</label>
+                        <label for="po2_value">{{ __('invoicing.purchase_order_value_label') }}</label>
                         <input type="number" class="form-control po_field" id="po2_value" name="po_value[]" step="0.01" value="0.00" placeholder="0.00" required/>
                     </td>
                     <td class="col_btn_delete">
-                        <button class="btn btn-outline-danger btn_remove" id="2">Remove</button>
+                        <button class="btn btn-outline-danger btn_remove" id="2">{{ __('invoicing.remove_button') }}</button>
                     </td>
                 </tr>
                 <tr class="dynamic-row" id="dynamic-row-3">
                     <td>
-                        <label for="po3_number">Purchase order number</label>
+                        <label for="po3_number">{{ __('invoicing.purchase_order_number_label') }}</label>
                         <textarea class="form-control po_field" id="po3_number" name="po_number[]" rows="1" required></textarea>
                     </td>
                     <td>
-                        <label for="po3_description">Description</label>
+                        <label for="po3_description">{{ __('invoicing.purchase_order_description_label') }}</label>
                         <textarea class="form-control po_field" id="po3_description" name="po_description[]" rows="1" required></textarea>
                     </td>
                     <td>
-                        <label for="po3_value">Value</label>
+                        <label for="po3_value">{{ __('invoicing.purchase_order_value_label') }}</label>
                         <input type="number" class="form-control po_field" id="po3_value" name="po_value[]" step="0.01" value="0.00" placeholder="0.00" required/>
                     </td>
                     <td class="col_btn_delete">
-                        <button class="btn btn-outline-danger btn_remove" id="3">Remove</button>
+                        <button class="btn btn-outline-danger btn_remove" id="3">{{ __('invoicing.remove_button') }}</button>
                     </td>
                 </tr>
             </table>
         </div>
 
-        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">Add Another Purchase Order <i class="fas fa-plus"></i></button>
+        <button id="btn_add_purchase_order" class="btn btn-outline-light form-control">{{ __('invoicing.add_another_purchase_order') }} <i class="fas fa-plus"></i></button>
 
         <div class="row">
             <!-- Invoice number section -->
             <div class="col">
-                <label for="invoice_number">Invoice number</label>
+                <label for="invoice_number">{{ __('invoicing.invoice_number_label') }}</label>
                 <textarea class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="invoice_number" name="invoice_number" rows="1" required>{{ old('invoice_number') }}</textarea>
-                <small id="labelHelp" class="form-text text-muted">Max 255 characters.</small>
+                <small id="labelHelp" class="form-text text-muted">{{ __('invoicing.maximum_characters_subtext') }}</small>
             </div>
 
             <!-- File upload section -->
             <div class="col">
-                <label for="upload_file">Attach file</label>
+                <label for="upload_file">{{ __('invoicing.attach_file_label') }}</label>
                 <input type="file" name="file" class="form-control-file">
             </div>
         </div>
@@ -117,13 +112,13 @@
         <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="ndaCheck" name="ndaCheck" required>
-                <label class="form-check-label" for="ndaCheck">I have read and accept the terms of the <a class="subtle-anchor" href="{{ route('nda') }}">NDA agreement</a>.</label>
+                <label class="form-check-label" for="ndaCheck">{{ __('invoicing.nda_agreement') }} <a class="subtle-anchor" href="{{ route('nda') }}">{{ __('invoicing.nda_agreement_secondary') }}</a>.</label>
             </div>
         </div>
 
         <!-- Submit button -->
         <div class="form-group">
-            <button class="btn btn-outline-light" type="submit" >Submit</button>
+            <button class="btn btn-outline-light" type="submit" >{{ __('invoicing.submit_button') }}</button>
         </div>
     </form>
 

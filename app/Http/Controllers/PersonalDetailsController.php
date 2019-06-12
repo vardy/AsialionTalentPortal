@@ -222,7 +222,7 @@ class PersonalDetailsController extends Controller
         }
 
         return redirect(route('personal_details'))->with([
-            'success-message' => 'Personal details successfully updated.'
+            'success-message' => __('success.personal_details_updated')
         ]);
     }
 

@@ -44,14 +44,14 @@
 
             <div id="login-form" class="login-area">
                 <div class="text-center">
-                    <p class="small-heading">Talent Portal</p>
+                    <p class="small-heading">{{ __('general.talent_portal_heading') }}</p>
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
                     <div class="form-group">
-                        <label for="email">{{ __('Email Address') }}</label>
+                        <label for="email">{{ __('login.email_address_label') }}</label>
 
                         <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password">{{ __('Password') }}</label>
+                        <label for="password">{{ __('login.password_label') }}</label>
 
                         <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
@@ -76,7 +76,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-light">
-                            {{ __('Login') }}
+                            {{ __('login.login_button') }}
                         </button>
                     </div>
                 </form>

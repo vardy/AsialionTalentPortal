@@ -97,7 +97,7 @@ class ProfilePictureController extends Controller
         unlink($path); // Removes PFP file
 
         return redirect(route('personal_details'))->with([
-            'success-message' => 'Profile picture successfully removed.'
+            'success-message' => __('success.pfp_removed')
         ]);
     }
 }

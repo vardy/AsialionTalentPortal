@@ -47,15 +47,15 @@
                 <img src="/storage/files/AL_LOGO.png" alt="AsiaLion Logo">
 
                 <div id="talent-portal-text-header-container">
-                    <p id="talent-portal-text-header">Talent Portal</p>
+                    <p id="talent-portal-text-header">{{ __('general.talent_portal_heading') }}</p>
                 </div>
 
                 <div id="side-nav-body">
                     <ul>
-                        <a href="{{ route('invoices') }}"><li class="@yield('currently_selected_invoices')"><span>Invoices</span></li></a>
-                        <a href="{{ route('nda') }}"><li class="@yield('currently_selected_nda')"><span>NDA</span></li></a>
-                        <a href="{{ route('personal_details') }}"><li class="@yield('currently_selected_personal_details')"><span>Personal Details</span></li></a>
-                        <a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}"><li><span>Careers</span></li></a>
+                        <a href="{{ route('invoices') }}"><li class="@yield('currently_selected_invoices')"><span>{{ __('general.invoices') }}</span></li></a>
+                        <a href="{{ route('nda') }}"><li class="@yield('currently_selected_nda')"><span>{{ __('general.nda') }}</span></li></a>
+                        <a href="{{ route('personal_details') }}"><li class="@yield('currently_selected_personal_details')"><span>{{ __('general.personal_details') }}</span></li></a>
+                        <a target="_blank" rel="noopener noreferrer" href="{{ route('careers') }}"><li><span>{{ __('general.careers') }}</span></li></a>
                         @auth
                             @if (auth()->user()->hasRole('admin'))
                                 <a href="{{ route('admin') }}"><li><span class="admin-link">Admin Panel</span></li></a>
@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="privacy-section">
-                            <a target="_blank" rel="noopener noreferrer" href="{{ route('privacy_policy') }}"><span class="privacy-item">Privacy Policy</span></a>
+                            <a target="_blank" rel="noopener noreferrer" href="{{ route('privacy_policy') }}"><span class="privacy-item">{{ __('general.privacy_policy') }}</span></a>
                         </div>
 
                         <div class="horizontal-rule"></div>
@@ -83,7 +83,7 @@
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
-                                <li class="relative"><span>Logout</span></li></a>
+                                <li class="relative"><span>{{ __('login.logout_button') }}</span></li></a>
                         </ul>
                     </div>
                 @endauth

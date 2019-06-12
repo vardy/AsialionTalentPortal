@@ -128,7 +128,7 @@ class InvoiceController extends Controller
             $invoice->save();
 
             return redirect(route('invoices'))->with([
-                'success-message' => 'Your invoice has been submitted. You will receive a confirmation email shortly.'
+                'success-message' => __('success.invoice_submitted')
             ]);
 
         } else {
