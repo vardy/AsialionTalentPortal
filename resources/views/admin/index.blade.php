@@ -50,6 +50,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email Address</th>
                         <th scope="col">Creation Date</th>
+                        <th scope="col">Roles</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,10 @@
                                 <th scope="row"><a href="/admin/user/{{ $user->id }}"> {{ $user->name }} </a></th>
                                 <td> {{ $user->email }} </td>
                                 <td> {{ $user->created_at }} </td>
+                                @php
+                                    $i = 0;
+                                @endphp
+                                <td> @foreach($user->roles as $role) @php $i++ @endphp {{ $role->name }}@if($i !== count($user->roles)),@endif @endforeach </td>
                             </tr>
                         @endforeach
                     </tbody>
