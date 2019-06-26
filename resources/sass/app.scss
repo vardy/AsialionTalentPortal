@@ -45,7 +45,18 @@ h1 {
   font-family: $heading-font;
   color: red;
   margin-top: 1.75em;
+}
+
+#talent-portal-text-header {
+  margin-bottom: 0.2em;
+}
+
+#greetings-subtext-container {
+  text-align: center;
+  width: 100%;
+  font-family: $heading-font;
   margin-bottom: 1em;
+  font-size: 0.8em;
 }
 
 .header-left, .header-right {

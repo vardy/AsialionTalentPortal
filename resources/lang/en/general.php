@@ -13,6 +13,8 @@ return [
     'privacy_policy' => 'Privacy Policy',
 
     // Cookie consent
-    'consent_message' => 'We use cookies to optimize and personalize your experience. By continuing to use the website, you will be agreeing to our'
+    'consent_message' => 'We use cookies to optimize and personalize your experience. By continuing to use the website, you will be agreeing to our',
+
+    'greetings_user' => 'Hi,'
 
 ];

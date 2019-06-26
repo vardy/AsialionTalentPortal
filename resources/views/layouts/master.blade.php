@@ -50,6 +50,10 @@
                     <p id="talent-portal-text-header">{{ __('general.talent_portal_heading') }}</p>
                 </div>
 
+                <div id="greetings-subtext-container">
+                    <p id="greetings-subtext">{{ __('general.greetings_user') }} {{ auth()->user()->name }}</p>
+                </div>
+
                 <div id="side-nav-body">
                     <ul>
                         <a href="{{ route('invoices') }}"><li class="@yield('currently_selected_invoices')"><span>{{ __('general.invoices') }}</span></li></a>
